@@ -28,24 +28,19 @@ export default function CodeEditor({ starterCode, solution, hint, expectedOutput
     setError("");
     setStatus("idle");
     try {
-      const res = await fetch("https://emkc.org/api/v2/piston/execute", {
+      const res = await fetch("/api/execute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          language: "java",
-          version: "15.0.2",
-          files: [{ name: "Main.java", content: code }],
-        }),
+        body: JSON.stringify({ code }),
       });
       const data = await res.json();
-      const stdout = data.run?.stdout ?? "";
-      const stderr = data.run?.stderr ?? "";
+      const stdout = data.output ?? "";
+      const stderr = data.error ?? "";
       setOutput(stdout);
       setError(stderr);
-      // Check if output matches expected
       if (stdout.trim() === expectedOutput.trim()) {
         setStatus("success");
-      } else if (stderr) {
+      } else if (stderr || data.exitCode !== 0) {
         setStatus("error");
       }
     } catch (e) {
