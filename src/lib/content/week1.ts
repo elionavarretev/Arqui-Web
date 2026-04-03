@@ -1,7 +1,7 @@
 export interface Exercise {
   id: string;
   title: string;
-  concept: "abstraccion" | "encapsulamiento" | "herencia" | "polimorfismo";
+  concept: "clase" | "abstraccion" | "encapsulamiento" | "herencia" | "polimorfismo" | "overriding";
   conceptLabel: string;
   conceptColor: string;
   explanation: string;
@@ -26,6 +26,122 @@ export const week1: WeekContent = {
   description: "Los 4 pilares de la Programación Orientada a Objetos en Java aplicados al desarrollo web.",
   exercises: [
     {
+      id: "clase",
+      title: "Clases en Java",
+      concept: "clase",
+      conceptLabel: "Fundamento",
+      conceptColor: "#06b6d4",
+      explanation: `<p>Una <strong>clase</strong> es el molde o plantilla a partir del cual se crean objetos. Define qué datos tiene y qué puede hacer.</p>
+<h3>Partes de una clase</h3>
+<ul>
+<li><strong>Atributos</strong> — el estado del objeto (datos que guarda)</li>
+<li><strong>Constructor</strong> — método especial que inicializa el objeto al crearlo con <code>new</code></li>
+<li><strong>Métodos</strong> — el comportamiento del objeto (lo que puede hacer)</li>
+</ul>
+<h3>¿Qué es un objeto?</h3>
+<p>Un objeto es una <strong>instancia</strong> de una clase. Si la clase es el molde, el objeto es el producto. Puedes crear miles de objetos del mismo molde.</p>
+<h3>En Spring Boot</h3>
+<p>Todo en Spring Boot son clases: <code>@Entity</code> para datos, <code>@Service</code> para lógica, <code>@RestController</code> para endpoints. Entender la anatomía de una clase es la base de todo.</p>`,
+      analogy: "🏠 La clase es el plano de arquitectura. El objeto es la casa construida. Con un solo plano puedes construir muchas casas.",
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
+  <!-- Label left -->
+  <text x="14" y="44" fill="#06b6d4" font-size="9" font-family="sans-serif" font-weight="700" text-anchor="middle" transform="rotate(-90,14,110)">CLASE</text>
+  <!-- Main class box -->
+  <rect x="30" y="14" width="260" height="182" rx="10" fill="#0c1e26" stroke="#06b6d4" stroke-width="2"/>
+  <!-- Class name section -->
+  <rect x="30" y="14" width="260" height="34" rx="10" fill="#06b6d4" fill-opacity="0.2"/>
+  <text x="44" y="27" fill="#67e8f9" font-size="9" font-family="sans-serif">class</text>
+  <text x="160" y="36" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="bold" font-family="monospace">Persona</text>
+  <!-- Attributes section -->
+  <text x="44" y="62" fill="#94a3b8" font-size="9" font-family="sans-serif" font-weight="600">ATRIBUTOS  (estado)</text>
+  <line x1="30" y1="50" x2="290" y2="50" stroke="#1e3a4a" stroke-width="1"/>
+  <text x="44" y="78" fill="#7dd3fc" font-size="11" font-family="monospace">String nombre</text>
+  <text x="44" y="94" fill="#7dd3fc" font-size="11" font-family="monospace">int edad</text>
+  <!-- Constructor section -->
+  <line x1="30" y1="104" x2="290" y2="104" stroke="#1e3a4a" stroke-width="1"/>
+  <text x="44" y="118" fill="#94a3b8" font-size="9" font-family="sans-serif" font-weight="600">CONSTRUCTOR  (inicializa)</text>
+  <text x="44" y="134" fill="#a78bfa" font-size="11" font-family="monospace">Persona(nombre, edad)</text>
+  <!-- Methods section -->
+  <line x1="30" y1="144" x2="290" y2="144" stroke="#1e3a4a" stroke-width="1"/>
+  <text x="44" y="158" fill="#94a3b8" font-size="9" font-family="sans-serif" font-weight="600">METODOS  (comportamiento)</text>
+  <text x="44" y="174" fill="#86efac" font-size="11" font-family="monospace">saludar(): void</text>
+  <text x="44" y="190" fill="#86efac" font-size="11" font-family="monospace">getNombre(): String</text>
+  <!-- Object instances on right -->
+  <text x="316" y="30" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="sans-serif">objetos</text>
+  <text x="316" y="44" text-anchor="middle" fill="#4b5563" font-size="9" font-family="sans-serif">(instancias)</text>
+  <rect x="298" y="52" width="88" height="38" rx="6" fill="#0c1e26" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="342" y="67" text-anchor="middle" fill="#67e8f9" font-size="9" font-family="monospace">p1: Persona</text>
+  <text x="342" y="82" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">"Ana", 20</text>
+  <rect x="298" y="100" width="88" height="38" rx="6" fill="#0c1e26" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="342" y="115" text-anchor="middle" fill="#67e8f9" font-size="9" font-family="monospace">p2: Persona</text>
+  <text x="342" y="130" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">"Luis", 22</text>
+  <!-- Arrow from class to objects -->
+  <line x1="291" y1="70" x2="297" y2="70" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="291" y1="119" x2="297" y2="119" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="316" y="158" text-anchor="middle" fill="#4b5563" font-size="8" font-family="sans-serif">new</text>
+  <text x="316" y="168" text-anchor="middle" fill="#4b5563" font-size="8" font-family="sans-serif">Persona(...)</text>
+</svg>`,
+      starterCode: `// Ejercicio 0: Anatomía de una clase
+// Crea la clase Persona completa
+
+class Persona {
+    // TODO: declara 2 atributos private:
+    // String nombre
+    // int edad
+
+    // TODO: crea el constructor que reciba nombre y edad
+    // public Persona(String nombre, int edad) { ... }
+
+    // TODO: crea getNombre() que retorne el nombre
+
+    // TODO: crea getEdad() que retorne la edad
+
+    // TODO: crea el método saludar() que imprima:
+    // "Hola, soy [nombre] y tengo [edad] años"
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Ana", 20);
+        Persona p2 = new Persona("Luis", 22);
+
+        p1.saludar();
+        p2.saludar();
+
+        System.out.println("Nombres: " + p1.getNombre() + ", " + p2.getNombre());
+    }
+}`,
+      solution: `class Persona {
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+
+    public void saludar() {
+        System.out.println("Hola, soy " + nombre + " y tengo " + edad + " años");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Ana", 20);
+        Persona p2 = new Persona("Luis", 22);
+        p1.saludar();
+        p2.saludar();
+        System.out.println("Nombres: " + p1.getNombre() + ", " + p2.getNombre());
+    }
+}`,
+      hint: "Declara 'private String nombre;' y 'private int edad;'. El constructor usa 'this.nombre = nombre;'. En saludar() usa System.out.println con concatenación.",
+      expectedOutput: "Hola, soy Ana y tengo 20 años\nHola, soy Luis y tengo 22 años\nNombres: Ana, Luis",
+    },
+    {
       id: "abstraccion",
       title: "Abstracción",
       concept: "abstraccion",
@@ -42,25 +158,34 @@ export const week1: WeekContent = {
 <h3>En Spring Boot</h3>
 <p>Los <code>Repository</code>, <code>Service</code> y <code>Controller</code> usan abstracción: defines una interfaz y Spring inyecta la implementación automáticamente.</p>`,
       analogy: "☕ Como un café express: presionas el botón y sale el café. No ves ni la bomba, ni la caldera, ni el filtro.",
-      diagram: `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" class="w-full">
-  <rect width="320" height="180" fill="#1e2030" rx="8"/>
-  <!-- Interface box -->
-  <rect x="90" y="20" width="140" height="50" rx="6" fill="none" stroke="#6366f1" stroke-width="2"/>
-  <text x="160" y="38" text-anchor="middle" fill="#818cf8" font-size="10" font-family="monospace">«interface»</text>
-  <text x="160" y="55" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" font-family="monospace">Vehiculo</text>
-  <text x="160" y="68" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">+ encender(): void</text>
-  <!-- Arrow down -->
-  <line x1="160" y1="70" x2="100" y2="110" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4"/>
-  <line x1="160" y1="70" x2="220" y2="110" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4"/>
-  <!-- Impl boxes -->
-  <rect x="40" y="110" width="110" height="45" rx="6" fill="#16213e" stroke="#4f46e5" stroke-width="1.5"/>
-  <text x="95" y="128" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" font-family="monospace">Auto</text>
-  <text x="95" y="145" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">encender() { ... }</text>
-  <rect x="170" y="110" width="110" height="45" rx="6" fill="#16213e" stroke="#4f46e5" stroke-width="1.5"/>
-  <text x="225" y="128" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" font-family="monospace">Moto</text>
-  <text x="225" y="145" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">encender() { ... }</text>
-  <!-- Label -->
-  <text x="160" y="172" text-anchor="middle" fill="#475569" font-size="9" font-family="monospace">La interfaz define el QUÉ, las clases el CÓMO</text>
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
+  <!-- Interface -->
+  <rect x="125" y="16" width="150" height="58" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+  <rect x="125" y="16" width="150" height="24" rx="8" fill="#6366f1" fill-opacity="0.25"/>
+  <text x="200" y="32" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="sans-serif" font-style="italic">interface</text>
+  <text x="200" y="50" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Vehiculo</text>
+  <text x="200" y="66" text-anchor="middle" fill="#818cf8" font-size="10" font-family="monospace">encender(): void</text>
+  <!-- Connector lines -->
+  <line x1="200" y1="74" x2="200" y2="92" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="200" y1="92" x2="100" y2="92" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="200" y1="92" x2="300" y2="92" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="100" y1="92" x2="100" y2="108" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="300" y1="92" x2="300" y2="108" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <!-- Label "implements" -->
+  <text x="148" y="90" fill="#6366f1" font-size="9" font-family="sans-serif" fill-opacity="0.7">implements</text>
+  <!-- Auto box -->
+  <rect x="30" y="108" width="140" height="60" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="100" y="130" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Auto</text>
+  <text x="100" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
+  <text x="100" y="162" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// llave fisica</text>
+  <!-- Moto box -->
+  <rect x="230" y="108" width="140" height="60" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="300" y="130" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Moto</text>
+  <text x="300" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
+  <text x="300" y="162" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// patada de arranque</text>
+  <!-- Bottom label -->
+  <text x="200" y="196" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">La interfaz define el QUE — las clases definen el COMO</text>
 </svg>`,
       starterCode: `// Ejercicio 1: Abstracción
 // Crea una interfaz Vehiculo con el método encender()
@@ -156,28 +281,33 @@ public class Main {
 <h3>En Spring Boot</h3>
 <p>Todas las entidades (<code>@Entity</code>) usan encapsulamiento con Lombok (<code>@Getter @Setter</code>) o getters/setters manuales.</p>`,
       analogy: "🏦 Como una cuenta bancaria: no puedes modificar el saldo directamente. Solo puedes depositar() o retirar() — el banco valida antes.",
-      diagram: `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" class="w-full">
-  <rect width="320" height="180" fill="#1e2030" rx="8"/>
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
   <!-- Class box -->
-  <rect x="80" y="20" width="160" height="130" rx="8" fill="#16213e" stroke="#10b981" stroke-width="2"/>
-  <rect x="80" y="20" width="160" height="28" rx="8" fill="#10b981" fill-opacity="0.3"/>
-  <text x="160" y="38" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="bold" font-family="monospace">CuentaBancaria</text>
-  <!-- Private fields -->
-  <text x="92" y="62" fill="#f87171" font-size="10" font-family="monospace">🔒 private saldo</text>
-  <text x="92" y="78" fill="#f87171" font-size="10" font-family="monospace">🔒 private titular</text>
-  <!-- Line -->
-  <line x1="80" y1="88" x2="240" y2="88" stroke="#374151" stroke-width="1"/>
-  <!-- Public methods -->
-  <text x="92" y="105" fill="#34d399" font-size="10" font-family="monospace">✅ getSaldo()</text>
-  <text x="92" y="120" fill="#34d399" font-size="10" font-family="monospace">✅ depositar(monto)</text>
-  <text x="92" y="135" fill="#34d399" font-size="10" font-family="monospace">✅ retirar(monto)</text>
-  <!-- External arrow blocked -->
-  <text x="18" y="95" fill="#f87171" font-size="18">✗</text>
-  <line x1="38" y1="93" x2="78" y2="80" stroke="#f87171" stroke-width="1.5" stroke-dasharray="3"/>
-  <text x="4" y="115" fill="#f87171" font-size="8" font-family="monospace">direct</text>
-  <text x="4" y="125" fill="#f87171" font-size="8" font-family="monospace">access</text>
-  <!-- Label -->
-  <text x="160" y="173" text-anchor="middle" fill="#475569" font-size="9" font-family="monospace">Acceso solo por métodos públicos</text>
+  <rect x="90" y="14" width="220" height="162" rx="10" fill="#0d1f1a" stroke="#10b981" stroke-width="2"/>
+  <!-- Class name header -->
+  <rect x="90" y="14" width="220" height="32" rx="10" fill="#10b981" fill-opacity="0.2"/>
+  <text x="200" y="35" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold" font-family="monospace">CuentaBancaria</text>
+  <!-- Section label: private -->
+  <text x="104" y="62" fill="#ef4444" font-size="9" font-family="sans-serif" font-weight="600" letter-spacing="1">PRIVATE</text>
+  <!-- private fields with lock icon (rect) -->
+  <rect x="104" y="68" width="8" height="10" rx="2" fill="#ef4444" fill-opacity="0.7"/>
+  <text x="118" y="78" fill="#fca5a5" font-size="11" font-family="monospace">saldo: double</text>
+  <rect x="104" y="84" width="8" height="10" rx="2" fill="#ef4444" fill-opacity="0.7"/>
+  <text x="118" y="94" fill="#fca5a5" font-size="11" font-family="monospace">titular: String</text>
+  <!-- Divider -->
+  <line x1="90" y1="104" x2="310" y2="104" stroke="#374151" stroke-width="1"/>
+  <!-- Section label: public -->
+  <text x="104" y="120" fill="#10b981" font-size="9" font-family="sans-serif" font-weight="600" letter-spacing="1">PUBLIC</text>
+  <!-- public methods with check -->
+  <circle cx="108" cy="131" r="4" fill="#10b981" fill-opacity="0.8"/>
+  <text x="118" y="135" fill="#6ee7b7" font-size="11" font-family="monospace">getSaldo()</text>
+  <circle cx="108" cy="147" r="4" fill="#10b981" fill-opacity="0.8"/>
+  <text x="118" y="151" fill="#6ee7b7" font-size="11" font-family="monospace">depositar(monto)</text>
+  <circle cx="108" cy="163" r="4" fill="#10b981" fill-opacity="0.8"/>
+  <text x="118" y="167" fill="#6ee7b7" font-size="11" font-family="monospace">retirar(monto)</text>
+  <!-- Bottom label -->
+  <text x="200" y="196" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">Los atributos son privados — el acceso es controlado</text>
 </svg>`,
       starterCode: `// Ejercicio 2: Encapsulamiento
 // Crea la clase CuentaBancaria con encapsulamiento correcto
@@ -268,29 +398,36 @@ class CuentaBancaria {
 <h3>En Spring Boot</h3>
 <p>Muy común en entidades con campos compartidos (id, createdAt, updatedAt) via una clase base <code>BaseEntity</code>.</p>`,
       analogy: "🧬 Como la herencia biológica: un hijo hereda rasgos del padre, pero también tiene sus propias características únicas.",
-      diagram: `<svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" class="w-full">
-  <rect width="320" height="190" fill="#1e2030" rx="8"/>
-  <!-- Parent -->
-  <rect x="90" y="15" width="140" height="60" rx="6" fill="#16213e" stroke="#f59e0b" stroke-width="2"/>
-  <text x="160" y="35" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold" font-family="monospace">Empleado</text>
-  <text x="160" y="50" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">- nombre: String</text>
-  <text x="160" y="63" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">+ trabajar(): void</text>
-  <!-- Arrow -->
-  <line x1="100" y1="75" x2="80" y2="115" stroke="#f59e0b" stroke-width="1.5"/>
-  <line x1="220" y1="75" x2="240" y2="115" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="50" y="100" fill="#f59e0b" font-size="18" font-family="monospace">↙</text>
-  <text x="225" y="100" fill="#f59e0b" font-size="18" font-family="monospace">↘</text>
-  <text x="160" y="100" text-anchor="middle" fill="#f59e0b" font-size="8" font-family="monospace">extends</text>
-  <!-- Children -->
-  <rect x="18" y="115" width="118" height="60" rx="6" fill="#16213e" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="77" y="133" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" font-family="monospace">Gerente</text>
-  <text x="77" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">- equipo: List</text>
-  <text x="77" y="163" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">+ liderar(): void</text>
-  <rect x="184" y="115" width="118" height="60" rx="6" fill="#16213e" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="243" y="133" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" font-family="monospace">Desarrollador</text>
-  <text x="243" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">- lenguaje: String</text>
-  <text x="243" y="163" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">+ programar(): void</text>
-  <text x="160" y="185" text-anchor="middle" fill="#475569" font-size="9" font-family="monospace">Hereda nombre + trabajar()</text>
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
+  <!-- Parent class -->
+  <rect x="130" y="14" width="140" height="62" rx="8" fill="#1c1a0e" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="130" y="14" width="140" height="26" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="200" y="32" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="bold" font-family="monospace">Empleado</text>
+  <text x="200" y="50" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">nombre: String</text>
+  <text x="200" y="66" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">trabajar(): void</text>
+  <!-- extends labels -->
+  <text x="103" y="102" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="sans-serif" font-style="italic">extends</text>
+  <text x="297" y="102" text-anchor="middle" fill="#f59e0b" font-size="9" font-family="sans-serif" font-style="italic">extends</text>
+  <!-- Connector lines -->
+  <line x1="200" y1="76" x2="200" y2="94" stroke="#f59e0b" stroke-width="1.5"/>
+  <line x1="103" y1="94" x2="297" y2="94" stroke="#f59e0b" stroke-width="1.5"/>
+  <line x1="103" y1="94" x2="103" y2="110" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="297" y1="94" x2="297" y2="110" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Gerente -->
+  <rect x="20" y="110" width="166" height="72" rx="8" fill="#1c1a0e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="103" y="130" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="bold" font-family="monospace">Gerente</text>
+  <text x="103" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">equipoSize: int</text>
+  <text x="103" y="164" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">liderar(): void</text>
+  <text x="103" y="178" text-anchor="middle" fill="#65a30d" font-size="9" font-family="sans-serif">+ hereda trabajar()</text>
+  <!-- Desarrollador -->
+  <rect x="214" y="110" width="166" height="72" rx="8" fill="#1c1a0e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="297" y="130" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="bold" font-family="monospace">Desarrollador</text>
+  <text x="297" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">lenguaje: String</text>
+  <text x="297" y="164" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">programar(): void</text>
+  <text x="297" y="178" text-anchor="middle" fill="#65a30d" font-size="9" font-family="sans-serif">+ hereda trabajar()</text>
+  <!-- Bottom label -->
+  <text x="200" y="200" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">Los hijos heredan todo del padre y agregan lo suyo</text>
 </svg>`,
       starterCode: `// Ejercicio 3: Herencia
 // Crea la jerarquía: Empleado -> Gerente y Desarrollador
@@ -404,35 +541,36 @@ public class Main {
 <h3>En Spring Boot</h3>
 <p>Los servicios se inyectan por interfaz (<code>UserService service</code>) — Spring inyecta la implementación concreta. Eso es polimorfismo en acción.</p>`,
       analogy: "🔊 Como un control remoto universal: el mismo botón 'play' funciona diferente en la TV, el DVD y el streaming. Mismo mensaje, diferente respuesta.",
-      diagram: `<svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg" class="w-full">
-  <rect width="320" height="190" fill="#1e2030" rx="8"/>
-  <!-- Array -->
-  <text x="10" y="30" fill="#94a3b8" font-size="10" font-family="monospace">Animal[] animales = {</text>
-  <rect x="10" y="38" width="60" height="28" rx="4" fill="#831843" stroke="#ec4899" stroke-width="1.5"/>
-  <text x="40" y="56" text-anchor="middle" fill="#f9a8d4" font-size="10" font-family="monospace">Perro</text>
-  <rect x="80" y="38" width="60" height="28" rx="4" fill="#831843" stroke="#ec4899" stroke-width="1.5"/>
-  <text x="110" y="56" text-anchor="middle" fill="#f9a8d4" font-size="10" font-family="monospace">Gato</text>
-  <rect x="150" y="38" width="60" height="28" rx="4" fill="#831843" stroke="#ec4899" stroke-width="1.5"/>
-  <text x="180" y="56" text-anchor="middle" fill="#f9a8d4" font-size="10" font-family="monospace">Vaca</text>
-  <text x="216" y="57" fill="#94a3b8" font-size="10" font-family="monospace">}</text>
-  <!-- Arrow -->
-  <text x="100" y="88" text-anchor="middle" fill="#ec4899" font-size="18">↓</text>
-  <text x="170" y="88" fill="#94a3b8" font-size="9" font-family="monospace">a.hacerSonido()</text>
-  <!-- Results -->
-  <rect x="10" y="100" width="88" height="30" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
-  <text x="54" y="119" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="monospace">"¡Guau!"</text>
-  <rect x="108" y="100" width="88" height="30" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
-  <text x="152" y="119" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="monospace">"¡Miau!"</text>
-  <rect x="206" y="100" width="88" height="30" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
-  <text x="250" y="119" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="monospace">"¡Muuu!"</text>
-  <!-- Lines from array to results -->
-  <line x1="40" y1="66" x2="54" y2="100" stroke="#ec4899" stroke-width="1" stroke-dasharray="3"/>
-  <line x1="110" y1="66" x2="152" y2="100" stroke="#ec4899" stroke-width="1" stroke-dasharray="3"/>
-  <line x1="180" y1="66" x2="250" y2="100" stroke="#ec4899" stroke-width="1" stroke-dasharray="3"/>
-  <!-- Loop -->
-  <text x="10" y="152" fill="#94a3b8" font-size="9" font-family="monospace">for (Animal a : animales) {</text>
-  <text x="20" y="165" fill="#ec4899" font-size="9" font-family="monospace">  a.hacerSonido(); // diferente en cada uno</text>
-  <text x="10" y="178" fill="#94a3b8" font-size="9" font-family="monospace">}</text>
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
+  <!-- Title: same call -->
+  <text x="200" y="22" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">a.hacerSonido()  →  resultado diferente</text>
+  <!-- Three animal boxes top -->
+  <rect x="22" y="32" width="104" height="40" rx="8" fill="#2d1033" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="74" y="48" text-anchor="middle" fill="#f9a8d4" font-size="12" font-weight="bold" font-family="monospace">Perro</text>
+  <text x="74" y="64" text-anchor="middle" fill="#ec4899" font-size="10" font-family="monospace">hacerSonido()</text>
+  <rect x="148" y="32" width="104" height="40" rx="8" fill="#2d1033" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="200" y="48" text-anchor="middle" fill="#f9a8d4" font-size="12" font-weight="bold" font-family="monospace">Gato</text>
+  <text x="200" y="64" text-anchor="middle" fill="#ec4899" font-size="10" font-family="monospace">hacerSonido()</text>
+  <rect x="274" y="32" width="104" height="40" rx="8" fill="#2d1033" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="326" y="48" text-anchor="middle" fill="#f9a8d4" font-size="12" font-weight="bold" font-family="monospace">Vaca</text>
+  <text x="326" y="64" text-anchor="middle" fill="#ec4899" font-size="10" font-family="monospace">hacerSonido()</text>
+  <!-- Arrows down -->
+  <line x1="74" y1="72" x2="74" y2="110" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="200" y1="72" x2="200" y2="110" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="326" y1="72" x2="326" y2="110" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Output bubbles -->
+  <rect x="22" y="110" width="104" height="36" rx="18" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="74" y="133" text-anchor="middle" fill="#a5b4fc" font-size="13" font-family="monospace">Guau!</text>
+  <rect x="148" y="110" width="104" height="36" rx="18" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="200" y="133" text-anchor="middle" fill="#a5b4fc" font-size="13" font-family="monospace">Miau!</text>
+  <rect x="274" y="110" width="104" height="36" rx="18" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="326" y="133" text-anchor="middle" fill="#a5b4fc" font-size="13" font-family="monospace">Muuu!</text>
+  <!-- For loop code -->
+  <rect x="20" y="158" width="360" height="38" rx="6" fill="#0f1117" stroke="#374151" stroke-width="1"/>
+  <text x="36" y="173" fill="#94a3b8" font-size="10" font-family="monospace">for (Animal a : animales) {</text>
+  <text x="52" y="188" fill="#ec4899" font-size="10" font-family="monospace">a.hacerSonido();  </text>
+  <text x="178" y="188" fill="#4b5563" font-size="10" font-family="monospace">// mismo codigo, distinto resultado</text>
 </svg>`,
       starterCode: `// Ejercicio 4: Polimorfismo
 // Crea Animal con hacerSonido() y subclases Perro, Gato, Vaca
@@ -519,6 +657,154 @@ public class Main {
 }`,
       hint: "En la clase Animal usa 'public abstract void hacerSonido();'. En el for, simplemente llama a.hacerSonido().",
       expectedOutput: "Rex dice: ¡Guau!\nMisi dice: ¡Miau!\nLola dice: ¡Muuu!",
+    },
+    {
+      id: "overriding",
+      title: "Overriding",
+      concept: "overriding",
+      conceptLabel: "Overriding",
+      conceptColor: "#f97316",
+      explanation: `<p><strong>Overriding</strong> (sobreescritura) ocurre cuando una subclase redefine un método de la clase padre con la misma firma. Se marca con <code>@Override</code>.</p>
+<h3>Reglas del Overriding</h3>
+<ul>
+<li>El nombre del método debe ser <strong>idéntico</strong></li>
+<li>Los parámetros deben ser <strong>los mismos</strong></li>
+<li>El tipo de retorno puede ser igual o una <strong>subclase</strong> (covarianza)</li>
+<li>No puedes reducir la visibilidad (<code>public</code> → <code>private</code> es inválido)</li>
+<li>Siempre usa <code>@Override</code> — detecta errores en tiempo de compilación</li>
+</ul>
+<h3>Overriding vs Overloading</h3>
+<ul>
+<li><strong>Overriding:</strong> mismo método en subclase, mismo nombre y parámetros</li>
+<li><strong>Overloading:</strong> mismo nombre, distintos parámetros, misma clase</li>
+</ul>
+<h3>toString() en Java</h3>
+<p>Todos los objetos heredan <code>toString()</code> de <code>Object</code>. Si no lo sobreescribes, imprime algo como <code>Persona@1a2b3c</code>. Con <code>@Override</code> controlas la representación.</p>`,
+      analogy: "📝 Como reescribir una receta heredada de tu abuela: misma receta base, pero tú la adaptas a tu estilo. El nombre del plato es el mismo.",
+      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="210" fill="#13141f" rx="10"/>
+  <!-- Parent class -->
+  <rect x="120" y="14" width="160" height="68" rx="8" fill="#1a0e05" stroke="#f97316" stroke-width="2"/>
+  <rect x="120" y="14" width="160" height="26" rx="8" fill="#f97316" fill-opacity="0.2"/>
+  <text x="200" y="31" text-anchor="middle" fill="#fb923c" font-size="12" font-weight="bold" font-family="monospace">Figura</text>
+  <text x="200" y="49" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">area(): double</text>
+  <text x="200" y="64" text-anchor="middle" fill="#64748b" font-size="9" font-family="monospace">// retorna 0.0 por defecto</text>
+  <!-- Arrow down -->
+  <line x1="200" y1="82" x2="200" y2="98" stroke="#f97316" stroke-width="1.5"/>
+  <line x1="104" y1="98" x2="296" y2="98" stroke="#f97316" stroke-width="1.5"/>
+  <line x1="104" y1="98" x2="104" y2="114" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="296" y1="98" x2="296" y2="114" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="200" y="95" text-anchor="middle" fill="#f97316" font-size="8" font-family="sans-serif">extends</text>
+  <!-- Circulo class -->
+  <rect x="14" y="114" width="180" height="74" rx="8" fill="#1a0e05" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="104" y="132" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="bold" font-family="monospace">Circulo</text>
+  <text x="104" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">radio: double</text>
+  <rect x="22" y="154" width="13" height="13" rx="2" fill="#f97316" fill-opacity="0.7"/>
+  <text x="104" y="166" text-anchor="middle" fill="#fdba74" font-size="10" font-family="monospace">@Override</text>
+  <text x="104" y="180" text-anchor="middle" fill="#86efac" font-size="10" font-family="monospace">area() → PI * r * r</text>
+  <!-- Rectangulo class -->
+  <rect x="206" y="114" width="180" height="74" rx="8" fill="#1a0e05" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="296" y="132" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="bold" font-family="monospace">Rectangulo</text>
+  <text x="296" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">ancho, alto: double</text>
+  <rect x="214" y="154" width="13" height="13" rx="2" fill="#f97316" fill-opacity="0.7"/>
+  <text x="296" y="166" text-anchor="middle" fill="#fdba74" font-size="10" font-family="monospace">@Override</text>
+  <text x="296" y="180" text-anchor="middle" fill="#86efac" font-size="10" font-family="monospace">area() → ancho * alto</text>
+  <!-- Bottom label -->
+  <text x="200" y="202" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">Mismo metodo, implementacion distinta en cada clase hija</text>
+</svg>`,
+      starterCode: `// Ejercicio 5: Overriding
+// Sobreescribe el método area() en cada figura
+
+class Figura {
+    public double area() {
+        return 0.0; // implementación base por defecto
+    }
+
+    @Override
+    public String toString() {
+        return "Figura con area = " + area();
+    }
+}
+
+class Circulo extends Figura {
+    private double radio;
+
+    public Circulo(double radio) {
+        this.radio = radio;
+    }
+
+    // TODO: @Override area()
+    // retorna Math.PI * radio * radio
+}
+
+class Rectangulo extends Figura {
+    private double ancho;
+    private double alto;
+
+    public Rectangulo(double ancho, double alto) {
+        this.ancho = ancho;
+        this.alto = alto;
+    }
+
+    // TODO: @Override area()
+    // retorna ancho * alto
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Figura[] figuras = {
+            new Circulo(5),
+            new Rectangulo(4, 6)
+        };
+
+        for (Figura f : figuras) {
+            // toString() llama a area() automaticamente (overriding en accion)
+            System.out.println(f);
+        }
+    }
+}`,
+      solution: `class Figura {
+    public double area() { return 0.0; }
+
+    @Override
+    public String toString() {
+        return "Figura con area = " + area();
+    }
+}
+
+class Circulo extends Figura {
+    private double radio;
+    public Circulo(double radio) { this.radio = radio; }
+
+    @Override
+    public double area() {
+        return Math.PI * radio * radio;
+    }
+}
+
+class Rectangulo extends Figura {
+    private double ancho, alto;
+    public Rectangulo(double ancho, double alto) {
+        this.ancho = ancho;
+        this.alto = alto;
+    }
+
+    @Override
+    public double area() {
+        return ancho * alto;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Figura[] figuras = { new Circulo(5), new Rectangulo(4, 6) };
+        for (Figura f : figuras) {
+            System.out.println(f);
+        }
+    }
+}`,
+      hint: "Escribe '@Override' en la línea anterior al método. Para Circulo: 'return Math.PI * radio * radio;'. Para Rectangulo: 'return ancho * alto;'",
+      expectedOutput: "Figura con area = 78.53981633974483\nFigura con area = 24.0",
     },
   ],
 };

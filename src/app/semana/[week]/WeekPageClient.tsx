@@ -12,10 +12,12 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
   const exercise = content.exercises[activeTab];
 
   const conceptColors: Record<string, string> = {
+    clase: "#06b6d4",
     abstraccion: "#6366f1",
     encapsulamiento: "#10b981",
     herencia: "#f59e0b",
     polimorfismo: "#ec4899",
+    overriding: "#f97316",
   };
 
   return (
