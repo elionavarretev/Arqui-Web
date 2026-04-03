@@ -7,8 +7,9 @@ const weekContent: Record<number, typeof week1> = {
   1: week1,
 };
 
-export default function WeekPage({ params }: { params: { week: string } }) {
-  const weekNum = parseInt(params.week);
+export default async function WeekPage({ params }: { params: Promise<{ week: string }> }) {
+  const { week } = await params;
+  const weekNum = parseInt(week);
   const content = weekContent[weekNum];
   if (!content) notFound();
 
