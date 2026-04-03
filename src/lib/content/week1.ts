@@ -158,34 +158,33 @@ public class Main {
 <h3>En Spring Boot</h3>
 <p>Los <code>Repository</code>, <code>Service</code> y <code>Controller</code> usan abstracción: defines una interfaz y Spring inyecta la implementación automáticamente.</p>`,
       analogy: "☕ Como un café express: presionas el botón y sale el café. No ves ni la bomba, ni la caldera, ni el filtro.",
-      diagram: `<svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" class="w-full">
-  <rect width="400" height="210" fill="#13141f" rx="10"/>
+      diagram: `<svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <rect width="400" height="180" fill="#13141f" rx="10"/>
   <!-- Interface -->
-  <rect x="125" y="16" width="150" height="58" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
-  <rect x="125" y="16" width="150" height="24" rx="8" fill="#6366f1" fill-opacity="0.25"/>
-  <text x="200" y="32" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="sans-serif" font-style="italic">interface</text>
-  <text x="200" y="50" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Vehiculo</text>
-  <text x="200" y="66" text-anchor="middle" fill="#818cf8" font-size="10" font-family="monospace">encender(): void</text>
+  <rect x="125" y="10" width="150" height="55" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+  <rect x="125" y="10" width="150" height="22" rx="8" fill="#6366f1" fill-opacity="0.25"/>
+  <text x="200" y="25" text-anchor="middle" fill="#a5b4fc" font-size="10" font-family="sans-serif" font-style="italic">interface</text>
+  <text x="200" y="42" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Vehiculo</text>
+  <text x="200" y="57" text-anchor="middle" fill="#818cf8" font-size="10" font-family="monospace">encender(): void</text>
   <!-- Connector lines -->
-  <line x1="200" y1="74" x2="200" y2="92" stroke="#6366f1" stroke-width="1.5"/>
-  <line x1="200" y1="92" x2="100" y2="92" stroke="#6366f1" stroke-width="1.5"/>
-  <line x1="200" y1="92" x2="300" y2="92" stroke="#6366f1" stroke-width="1.5"/>
-  <line x1="100" y1="92" x2="100" y2="108" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <line x1="300" y1="92" x2="300" y2="108" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="200" y1="65" x2="200" y2="80" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="100" y1="80" x2="300" y2="80" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="100" y1="80" x2="100" y2="92" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="300" y1="80" x2="300" y2="92" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3"/>
   <!-- Label "implements" -->
-  <text x="148" y="90" fill="#6366f1" font-size="9" font-family="sans-serif" fill-opacity="0.7">implements</text>
+  <text x="210" y="78" fill="#6366f1" font-size="9" font-family="sans-serif" fill-opacity="0.7">implements</text>
   <!-- Auto box -->
-  <rect x="30" y="108" width="140" height="60" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
-  <text x="100" y="130" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Auto</text>
-  <text x="100" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
-  <text x="100" y="162" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// llave fisica</text>
+  <rect x="20" y="92" width="155" height="55" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="97" y="113" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Auto</text>
+  <text x="97" y="130" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
+  <text x="97" y="143" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// llave fisica</text>
   <!-- Moto box -->
-  <rect x="230" y="108" width="140" height="60" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
-  <text x="300" y="130" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Moto</text>
-  <text x="300" y="148" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
-  <text x="300" y="162" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// patada de arranque</text>
+  <rect x="225" y="92" width="155" height="55" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="302" y="113" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="monospace">Moto</text>
+  <text x="302" y="130" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">encender() {</text>
+  <text x="302" y="143" text-anchor="middle" fill="#7c85a0" font-size="9" font-family="monospace">// patada de arranque</text>
   <!-- Bottom label -->
-  <text x="200" y="196" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">La interfaz define el QUE — las clases definen el COMO</text>
+  <text x="200" y="168" text-anchor="middle" fill="#4b5563" font-size="10" font-family="sans-serif">La interfaz define el QUE — las clases definen el COMO</text>
 </svg>`,
       starterCode: `// Ejercicio 1: Abstracción
 // Crea una interfaz Vehiculo con el método encender()
