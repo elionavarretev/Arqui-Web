@@ -19,7 +19,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
             <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest">UPC · 2026-10</span>
-            <h1 className="text-xl font-bold text-white mt-0.5">Arquitectura de Aplicaciones Web</h1>
+            <h1 className="text-base sm:text-xl font-bold text-white mt-0.5">Arquitectura de Aplicaciones Web</h1>
           </div>
           <div className="text-xs text-slate-500 font-mono">ASI705</div>
         </div>
@@ -69,11 +69,11 @@ export default function Home() {
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
             <span className="text-indigo-300 text-xs font-mono">Complemento interactivo · No oficial</span>
           </div>
-          <h2 className="text-4xl font-bold text-white leading-tight mb-4">
-            Aprende a tu ritmo,<br />
+          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+            Aprende a tu ritmo,{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">escribe código real.</span>
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed mb-6">
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-6">
             Cada semana, una unidad. Lee el concepto, prueba el código en el editor y valida tu entendimiento — todo en un solo lugar.
           </p>
           <a
