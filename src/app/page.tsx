@@ -58,7 +58,6 @@ export default function Home() {
             Toda consulta formal se realiza por correo electrónico al{" "}
             <span className="text-slate-300 font-semibold">profesor</span> o al{" "}
             <span className="text-slate-300 font-semibold">delegado del aula</span>.
-            Discord es solo para soporte entre compañeros.
           </p>
         </div>
       </div>
