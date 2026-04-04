@@ -25,16 +25,68 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Official notice banner */}
+      <div className="border-b border-amber-900/40 bg-amber-950/30">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-amber-400 text-base">📌</span>
+            <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Plataforma oficial</span>
+          </div>
+          <p className="text-amber-200/80 text-xs leading-relaxed">
+            El material oficial del curso está en el{" "}
+            <a
+              href="https://aulavirtual.upc.edu.pe/ultra/courses/_529653_1/outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 underline underline-offset-2 hover:text-amber-300 font-semibold"
+            >
+              Aula Virtual UPC
+            </a>
+            . Esta web es un <strong className="text-amber-300">complemento interactivo</strong> — no reemplaza las entregas, evaluaciones ni comunicaciones oficiales.
+          </p>
+        </div>
+      </div>
+
+      {/* Communication banner */}
+      <div className="border-b border-slate-800 bg-slate-900/40">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-slate-400 text-base">✉️</span>
+            <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Comunicación oficial</span>
+          </div>
+          <p className="text-slate-400 text-xs leading-relaxed">
+            Toda consulta formal se realiza por correo electrónico al{" "}
+            <span className="text-slate-300 font-semibold">profesor</span> o al{" "}
+            <span className="text-slate-300 font-semibold">delegado del aula</span>.
+            Discord es solo para soporte entre compañeros.
+          </p>
+        </div>
+      </div>
+
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
+      <section className="max-w-6xl mx-auto px-6 pt-14 pb-10">
         <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 bg-indigo-950/50 border border-indigo-800/40 rounded-full px-3 py-1 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+            <span className="text-indigo-300 text-xs font-mono">Complemento interactivo · No oficial</span>
+          </div>
           <h2 className="text-4xl font-bold text-white leading-tight mb-4">
             Aprende a tu ritmo,<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">escribe código real.</span>
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-400 text-lg leading-relaxed mb-6">
             Cada semana, una unidad. Lee el concepto, prueba el código en el editor y valida tu entendimiento — todo en un solo lugar.
           </p>
+          <a
+            href="https://aulavirtual.upc.edu.pe/ultra/courses/_529653_1/outline"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 hover:border-amber-400/60 text-amber-400 hover:text-amber-300 text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            <span>🎓</span>
+            <span>Ir al Aula Virtual UPC (oficial)</span>
+            <span className="opacity-60">↗</span>
+          </a>
         </div>
       </section>
 
@@ -72,8 +124,24 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 px-6 py-6 text-center text-xs text-slate-600 font-mono">
-        Arquitectura de Aplicaciones Web · ASI705 · UPC 2026-10 · Prof. Elio Navarrete
+      <footer className="border-t border-slate-800 px-6 py-8">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="text-xs text-slate-600 font-mono">
+            Arquitectura de Aplicaciones Web · ASI705 · UPC 2026-10 · Prof. Elio Navarrete
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs">
+            <a
+              href="https://aulavirtual.upc.edu.pe/ultra/courses/_529653_1/outline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-500/70 hover:text-amber-400 transition-colors"
+            >
+              📌 Aula Virtual UPC (oficial)
+            </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
+            <span className="text-slate-600">✉️ Consultas: correo al profesor o delegado</span>
+          </div>
+        </div>
       </footer>
     </div>
   );
