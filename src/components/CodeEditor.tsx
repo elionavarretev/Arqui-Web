@@ -21,12 +21,15 @@ export default function CodeEditor({ starterCode, solution, hint, expectedOutput
   const [showHint, setShowHint] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [attempts, setAttempts] = useState(0);
+  const ATTEMPTS_TO_UNLOCK = 3;
 
   const runCode = async () => {
     setRunning(true);
     setOutput("");
     setError("");
     setStatus("idle");
+    setAttempts(a => a + 1);
     try {
       const res = await fetch("/api/execute", {
         method: "POST",
@@ -78,12 +81,21 @@ export default function CodeEditor({ starterCode, solution, hint, expectedOutput
             <Lightbulb size={12} />
             Pista
           </button>
-          <button
-            onClick={() => setShowSolution(!showSolution)}
-            className="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:bg-slate-400/10 rounded transition-colors"
-          >
-            Ver solución
-          </button>
+          {attempts >= ATTEMPTS_TO_UNLOCK ? (
+            <button
+              onClick={() => setShowSolution(!showSolution)}
+              className="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:bg-slate-400/10 rounded transition-colors"
+            >
+              {showSolution ? "Ocultar" : "Ver solución"}
+            </button>
+          ) : (
+            <span
+              title={`Intenta ${ATTEMPTS_TO_UNLOCK - attempts} vez${ATTEMPTS_TO_UNLOCK - attempts === 1 ? "" : " más"} antes de ver la solución`}
+              className="flex items-center gap-1 px-2 py-1 text-xs text-slate-600 cursor-not-allowed select-none"
+            >
+              🔒 {ATTEMPTS_TO_UNLOCK - attempts} intento{ATTEMPTS_TO_UNLOCK - attempts !== 1 ? "s" : ""}
+            </span>
+          )}
           <button
             onClick={reset}
             className="flex items-center gap-1 px-2 py-1 text-xs text-slate-400 hover:bg-slate-400/10 rounded transition-colors"
@@ -110,15 +122,11 @@ export default function CodeEditor({ starterCode, solution, hint, expectedOutput
 
       {/* Solution */}
       {showSolution && (
-        <div className="px-4 py-3 bg-slate-800/50 border-b border-slate-700">
-          <p className="text-xs text-slate-400 mb-2">Solución:</p>
-          <MonacoEditor
-            height="200px"
-            language="java"
-            value={solution}
-            options={{ readOnly: true, minimap: { enabled: false }, fontSize: 12, lineNumbers: "off", scrollBeyondLastLine: false }}
-            theme="vs-dark"
-          />
+        <div className="px-4 py-3 bg-slate-900/80 border-b border-slate-700">
+          <p className="text-xs text-emerald-400 font-semibold mb-2">✅ Solución:</p>
+          <pre className="text-xs text-slate-300 font-mono whitespace-pre overflow-x-auto leading-relaxed max-h-52 overflow-y-auto">
+            {solution}
+          </pre>
         </div>
       )}
 
