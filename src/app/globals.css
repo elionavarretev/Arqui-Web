@@ -16,6 +16,10 @@ body {
 ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
 
+/* Oculta scrollbar horizontal en la barra de tabs */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
 code {
   background: #1e2030;
   padding: 2px 6px;
