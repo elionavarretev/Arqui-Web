@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 interface ConceptPanelProps {
   title: string;
   conceptLabel: string;
@@ -5,9 +7,10 @@ interface ConceptPanelProps {
   explanation: string;
   analogy: string;
   diagram: string;
+  diagramComponent?: ReactNode;
 }
 
-export default function ConceptPanel({ title, conceptLabel, conceptColor, explanation, analogy, diagram }: ConceptPanelProps) {
+export default function ConceptPanel({ title, conceptLabel, conceptColor, explanation, analogy, diagram, diagramComponent }: ConceptPanelProps) {
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       {/* Concept badge */}
@@ -23,9 +26,13 @@ export default function ConceptPanel({ title, conceptLabel, conceptColor, explan
       {/* Title */}
       <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
 
-      {/* Diagram */}
-      <div className="flex-shrink-0 mb-5 rounded-xl overflow-hidden border border-slate-700 bg-[#1e2030] [&_svg]:block [&_svg]:w-full">
-        <div dangerouslySetInnerHTML={{ __html: diagram }} />
+      {/* Diagram — interactive component or static SVG */}
+      <div className="flex-shrink-0 mb-5">
+        {diagramComponent ?? (
+          <div className="rounded-xl overflow-hidden border border-slate-700 bg-[#1e2030] [&_svg]:block [&_svg]:w-full">
+            <div dangerouslySetInnerHTML={{ __html: diagram }} />
+          </div>
+        )}
       </div>
 
       {/* Analogy */}

@@ -2,23 +2,36 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, BookOpen, Code2 } from "lucide-react";
+import { ChevronLeft, BookOpen, Code2, GraduationCap } from "lucide-react";
 import ConceptPanel from "@/components/ConceptPanel";
 import CodeEditor from "@/components/CodeEditor";
+import LayeredCodeEditor from "@/components/LayeredCodeEditor";
+import ExamPanel from "@/components/ExamPanel";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import type { WeekContent } from "@/lib/content/week1";
 
 export default function WeekPageClient({ content }: { content: WeekContent }) {
   const [activeTab, setActiveTab] = useState(0);
+  const [examKey, setExamKey] = useState(0);
   const [mobileView, setMobileView] = useState<"teoria" | "editor">("teoria");
-  const exercise = content.exercises[activeTab];
+  const isExam = activeTab === content.exercises.length;
+  const exercise = isExam ? content.exercises[0] : content.exercises[activeTab];
 
   const conceptColors: Record<string, string> = {
+    // Semana 1 — Java OO
     clase: "#06b6d4",
     abstraccion: "#6366f1",
     encapsulamiento: "#10b981",
     herencia: "#f59e0b",
     polimorfismo: "#ec4899",
     overriding: "#f97316",
+    // Semana 2 — APIs REST
+    rest: "#8b5cf6",
+    controller: "#10b981",
+    http_verbs: "#06b6d4",
+    request: "#f59e0b",
+    response: "#ec4899",
+    service: "#6366f1",
   };
 
   const color = conceptColors[exercise.concept];
@@ -62,66 +75,94 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
             </button>
           );
         })}
+        {/* Exam tab */}
+        <button
+          onClick={() => { setActiveTab(content.exercises.length); setExamKey(k => k + 1); }}
+          className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all whitespace-nowrap ml-2 ${
+            isExam ? "text-white" : "text-slate-500 hover:text-slate-300"
+          }`}
+          style={isExam ? { background: "#f59e0b22", color: "#f59e0b", border: "1px solid #f59e0b44" } : {}}
+        >
+          <GraduationCap size={12} />
+          Examen
+        </button>
       </div>
 
-      {/* Mobile toggle: Teoría / Editor */}
-      <div className="flex-none md:hidden flex border-b border-slate-800 bg-[#0d0f18]">
-        <button
-          onClick={() => setMobileView("teoria")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
-            mobileView === "teoria"
-              ? "text-white border-b-2"
-              : "text-slate-500"
-          }`}
-          style={mobileView === "teoria" ? { borderColor: color } : {}}
-        >
-          <BookOpen size={13} />
-          Teoría
-        </button>
-        <button
-          onClick={() => setMobileView("editor")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
-            mobileView === "editor"
-              ? "text-white border-b-2"
-              : "text-slate-500"
-          }`}
-          style={mobileView === "editor" ? { borderColor: color } : {}}
-        >
-          <Code2 size={13} />
-          Editor
-        </button>
-      </div>
+      {/* Mobile toggle: Teoría / Editor (only for exercises) */}
+      {!isExam && (
+        <div className="flex-none md:hidden flex border-b border-slate-800 bg-[#0d0f18]">
+          <button
+            onClick={() => setMobileView("teoria")}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
+              mobileView === "teoria" ? "text-white border-b-2" : "text-slate-500"
+            }`}
+            style={mobileView === "teoria" ? { borderColor: color } : {}}
+          >
+            <BookOpen size={13} />
+            Teoría
+          </button>
+          <button
+            onClick={() => setMobileView("editor")}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
+              mobileView === "editor" ? "text-white border-b-2" : "text-slate-500"
+            }`}
+            style={mobileView === "editor" ? { borderColor: color } : {}}
+          >
+            <Code2 size={13} />
+            Editor
+          </button>
+        </div>
+      )}
 
       {/* Main layout */}
-      <div className="flex-1 min-h-0 flex flex-col md:grid md:grid-cols-2 md:gap-0">
+      <div className="flex-1 min-h-0 flex flex-col md:grid md:gap-0"
+        style={{ gridTemplateColumns: isExam ? "1fr" : "1fr 1fr" }}>
 
-        {/* Left: Concept — hidden on mobile when editor is active */}
-        <div
-          className={`md:border-r md:border-slate-800 md:p-6 md:overflow-y-auto md:block
+        {/* EXAM VIEW */}
+        {isExam && (
+          <div className="flex-1 min-h-0 overflow-hidden bg-[#0d0f18]">
+            <ExamPanel key={examKey} questions={content.exam} conceptColor="#f59e0b" weekNumber={content.week} weekTitle={content.title} />
+          </div>
+        )}
+
+        {/* Left: Concept */}
+        {!isExam && (
+          <div className={`md:border-r md:border-slate-800 md:p-6 md:overflow-y-auto md:block
             ${mobileView === "teoria" ? "flex flex-col flex-1 min-h-0 p-4 overflow-y-auto" : "hidden"}`}
-        >
-          <ConceptPanel
-            title={exercise.title}
-            conceptLabel={exercise.conceptLabel}
-            conceptColor={color}
-            explanation={exercise.explanation}
-            analogy={exercise.analogy}
-            diagram={exercise.diagram}
-          />
-        </div>
+          >
+            <ConceptPanel
+              title={exercise.title}
+              conceptLabel={exercise.conceptLabel}
+              conceptColor={color}
+              explanation={exercise.explanation}
+              analogy={exercise.analogy}
+              diagram={exercise.diagram}
+              diagramComponent={exercise.concept === "service" ? <ArchitectureDiagram /> : undefined}
+            />
+          </div>
+        )}
 
-        {/* Right: Editor — hidden on mobile when teoria is active */}
-        <div
-          className={`md:p-4 md:overflow-hidden md:block
+        {/* Right: Editor */}
+        {!isExam && (
+          <div className={`md:p-4 md:overflow-hidden md:block
             ${mobileView === "editor" ? "flex flex-col flex-1 min-h-0 p-3 overflow-hidden" : "hidden"}`}
-        >
-          <CodeEditor
-            starterCode={exercise.starterCode}
-            solution={exercise.solution}
-            hint={exercise.hint}
-            expectedOutput={exercise.expectedOutput}
-          />
-        </div>
+          >
+            {exercise.layers && exercise.combinedSimulation && exercise.combinedExpectedOutput ? (
+              <LayeredCodeEditor
+                layers={exercise.layers}
+                combinedSimulation={exercise.combinedSimulation}
+                combinedExpectedOutput={exercise.combinedExpectedOutput}
+              />
+            ) : (
+              <CodeEditor
+                starterCode={exercise.starterCode}
+                solution={exercise.solution}
+                hint={exercise.hint}
+                expectedOutput={exercise.expectedOutput}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

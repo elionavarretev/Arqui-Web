@@ -1,7 +1,18 @@
+export interface LayerTab {
+  step: number;
+  label: string;    // "1️⃣ @Entity"
+  filename: string; // "Producto.java"
+  role: string;     // "El modelo de datos → tabla en la BD"
+  color: string;
+  starterCode: string;
+  solution: string;
+  hint: string;
+}
+
 export interface Exercise {
   id: string;
   title: string;
-  concept: "clase" | "abstraccion" | "encapsulamiento" | "herencia" | "polimorfismo" | "overriding";
+  concept: string;
   conceptLabel: string;
   conceptColor: string;
   explanation: string;
@@ -11,6 +22,19 @@ export interface Exercise {
   solution: string;
   hint: string;
   expectedOutput: string;
+  // Optional: multi-layer guided editor
+  layers?: LayerTab[];
+  combinedSimulation?: string;
+  combinedExpectedOutput?: string;
+}
+
+export interface ExamQuestion {
+  id: number;
+  text: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+  category: string;
 }
 
 export interface WeekContent {
@@ -18,6 +42,7 @@ export interface WeekContent {
   title: string;
   description: string;
   exercises: Exercise[];
+  exam: ExamQuestion[];
 }
 
 export const week1: WeekContent = {
@@ -804,6 +829,283 @@ public class Main {
 }`,
       hint: "Escribe '@Override' en la línea anterior al método. Para Circulo: 'return Math.PI * radio * radio;'. Para Rectangulo: 'return ancho * alto;'",
       expectedOutput: "Figura con area = 78.53981633974483\nFigura con area = 24.0",
+    },
+  ],
+  exam: [
+    {
+      id: 1,
+      category: "Clases en Java",
+      text: "¿Cuál es la palabra clave correcta para definir una clase en Java?",
+      options: ["object", "class", "type", "struct"],
+      correctAnswer: 1,
+      explanation: "En Java, `class` es la palabra clave para declarar una clase. Es el molde a partir del cual se crean objetos.",
+    },
+    {
+      id: 2,
+      category: "Clases en Java",
+      text: "¿Qué elemento de una clase se encarga de inicializar el objeto cuando se usa `new`?",
+      options: ["Un método estático", "El método main()", "El constructor", "Un atributo público"],
+      correctAnswer: 2,
+      explanation: "El constructor es un método especial que tiene el mismo nombre que la clase y se ejecuta automáticamente al crear un objeto con `new`.",
+    },
+    {
+      id: 3,
+      category: "Encapsulamiento",
+      text: "¿Cuál modificador de acceso hace que un atributo solo sea accesible dentro de su propia clase?",
+      options: ["public", "protected", "default", "private"],
+      correctAnswer: 3,
+      explanation: "`private` restringe el acceso al atributo únicamente dentro de la clase que lo declara. Es la base del encapsulamiento en Java.",
+    },
+    {
+      id: 4,
+      category: "Encapsulamiento",
+      text: "Para acceder a un atributo privado desde fuera de la clase, usamos:",
+      options: ["Acceso directo con el operador punto", "Métodos getter y setter públicos", "La palabra clave `super`", "Un constructor estático"],
+      correctAnswer: 1,
+      explanation: "Los métodos getter (para leer) y setter (para modificar) son la forma estándar de acceder a atributos privados, manteniendo el control sobre los datos.",
+    },
+    {
+      id: 5,
+      category: "Abstracción",
+      text: "¿Qué palabra clave usa una clase concreta para implementar una interfaz en Java?",
+      options: ["extends", "inherits", "implements", "overrides"],
+      correctAnswer: 2,
+      explanation: "`implements` es la palabra clave para que una clase concreta cumpla el contrato definido por una interfaz. Una clase puede implementar múltiples interfaces.",
+    },
+    {
+      id: 6,
+      category: "Abstracción",
+      text: "Una interfaz en Java define:",
+      options: [
+        "La implementación completa de todos sus métodos",
+        "Un contrato con métodos que las clases implementadoras deben definir",
+        "Solo atributos privados compartidos",
+        "Un tipo de herencia múltiple con código",
+      ],
+      correctAnswer: 1,
+      explanation: "Una interfaz define el QUÉ (el contrato), no el CÓMO. Las clases que la implementan son responsables de definir el comportamiento de cada método.",
+    },
+    {
+      id: 7,
+      category: "Herencia",
+      text: "¿Cuál es la palabra clave para que una clase herede de otra en Java?",
+      options: ["implements", "extends", "inherits", "super"],
+      correctAnswer: 1,
+      explanation: "`extends` permite que una clase hija herede atributos y métodos de una clase padre. Java solo permite herencia simple (una clase padre).",
+    },
+    {
+      id: 8,
+      category: "Herencia",
+      text: "¿Para qué se usa `super()` dentro del constructor de una clase hija?",
+      options: [
+        "Para crear un nuevo objeto de la clase padre",
+        "Para llamar al constructor de la clase padre",
+        "Para sobreescribir un método heredado",
+        "Para acceder a métodos estáticos",
+      ],
+      correctAnswer: 1,
+      explanation: "`super()` invoca el constructor de la clase padre desde la clase hija. Debe ser la primera línea del constructor hijo cuando se necesita inicializar el padre.",
+    },
+    {
+      id: 9,
+      category: "Polimorfismo",
+      text: "El polimorfismo en Java permite que:",
+      options: [
+        "Una clase tenga múltiples constructores",
+        "Un atributo sea de varios tipos a la vez",
+        "Un objeto de tipo padre pueda referenciar objetos de clases hijas",
+        "Se hereden múltiples clases simultáneamente",
+      ],
+      correctAnswer: 2,
+      explanation: "Con polimorfismo, una variable del tipo padre puede apuntar a objetos de cualquier clase hija. Esto permite tratar objetos diferentes de forma uniforme.",
+    },
+    {
+      id: 10,
+      category: "Overriding",
+      text: "¿Cuál de las siguientes afirmaciones sobre `@Override` es correcta?",
+      options: [
+        "Es obligatorio para que el método funcione correctamente",
+        "Permite al compilador verificar que el método sobreescribe uno del padre",
+        "Solo se usa en interfaces, no en clases abstractas",
+        "Cambia el tipo de retorno del método heredado",
+      ],
+      correctAnswer: 1,
+      explanation: "`@Override` es una anotación que le indica al compilador que este método sobreescribe uno de la clase padre. Si no existe ese método en el padre, el compilador lanza un error. Es una buena práctica siempre usarla.",
+    },
+    {
+      id: 11,
+      category: "Overriding",
+      text: "¿Cuál es la diferencia principal entre Overriding y Overloading?",
+      options: [
+        "Overriding usa @Override, Overloading usa @Overload",
+        "Overriding sobreescribe un método heredado; Overloading define métodos con el mismo nombre pero distintos parámetros",
+        "Overriding solo funciona con interfaces; Overloading solo con clases abstractas",
+        "No hay diferencia, son sinónimos en Java",
+      ],
+      correctAnswer: 1,
+      explanation: "Overriding: reemplaza la implementación de un método heredado (misma firma). Overloading: múltiples métodos con el mismo nombre pero diferente número o tipo de parámetros en la misma clase.",
+    },
+    {
+      id: 12,
+      category: "Clases en Java",
+      text: "¿Cuál de los siguientes NO es un pilar de la Programación Orientada a Objetos?",
+      options: ["Abstracción", "Recursión", "Herencia", "Polimorfismo"],
+      correctAnswer: 1,
+      explanation: "Los 4 pilares de la POO son: Abstracción, Encapsulamiento, Herencia y Polimorfismo. La recursión es una técnica de programación, pero no es un pilar de la POO.",
+    },
+    {
+      id: 13,
+      category: "Clases en Java",
+      text: "¿Qué significa que un método sea `static` en Java?",
+      options: [
+        "Solo puede ser llamado desde subclases",
+        "Pertenece a la clase y se llama sin crear una instancia",
+        "No puede acceder a ningún atributo de la clase",
+        "Es privado y no puede ser heredado",
+      ],
+      correctAnswer: 1,
+      explanation: "Un método `static` pertenece a la clase, no a las instancias. Se llama directamente: `MiClase.metodo()` sin necesitar `new`. Ejemplo real: `Math.sqrt()`, `Arrays.sort()`.",
+    },
+    {
+      id: 14,
+      category: "Clases en Java",
+      text: "¿Qué representa la palabra clave `this` dentro de un método de instancia?",
+      options: [
+        "La clase padre del objeto actual",
+        "El método que se está ejecutando actualmente",
+        "La referencia al objeto actual sobre el que se invoca el método",
+        "El tipo genérico de la clase",
+      ],
+      correctAnswer: 2,
+      explanation: "`this` es la referencia al objeto actual. Se usa para distinguir atributos de parámetros con el mismo nombre: `this.nombre = nombre`. También permite llamar a otro constructor con `this(...)`.",
+    },
+    {
+      id: 15,
+      category: "Abstracción",
+      text: "¿Puede una clase `abstract` en Java tener métodos con implementación (cuerpo)?",
+      options: [
+        "No, todos sus métodos deben ser abstractos sin cuerpo",
+        "Sí, puede mezclar métodos abstractos y métodos con implementación",
+        "Solo si implementa al menos una interfaz",
+        "Solo en Java 11 o superior",
+      ],
+      correctAnswer: 1,
+      explanation: "Una clase `abstract` puede tener métodos concretos (con cuerpo, heredables) y métodos abstractos (sin cuerpo, que las subclases deben implementar obligatoriamente). Esta combinación es su gran ventaja.",
+    },
+    {
+      id: 16,
+      category: "Abstracción",
+      text: "¿Puede una clase `abstract` tener constructor en Java?",
+      options: [
+        "No, porque no puede ser instanciada directamente",
+        "Sí, y las subclases lo invocan con `super()` para inicializar la parte heredada",
+        "Solo si no tiene métodos abstractos",
+        "Solo si es también `final`",
+      ],
+      correctAnswer: 1,
+      explanation: "Las clases abstractas sí pueden tener constructores, aunque no se instancien directamente. Las subclases los llaman con `super()` para inicializar los atributos del padre. Es un patrón muy común.",
+    },
+    {
+      id: 17,
+      category: "Herencia",
+      text: "¿Qué hace `super.metodo()` dentro de una clase hija que sobreescribe ese método?",
+      options: [
+        "Crea una nueva instancia del padre y llama su método",
+        "Reemplaza el método del padre definitivamente",
+        "Invoca la versión del método definida en la clase padre",
+        "Accede a métodos estáticos del padre únicamente",
+      ],
+      correctAnswer: 2,
+      explanation: "`super.metodo()` ejecuta la implementación original del padre desde dentro del override de la hija. Útil cuando quieres extender (no reemplazar) el comportamiento: ejecutas lo del padre y añades lógica propia.",
+    },
+    {
+      id: 18,
+      category: "Herencia",
+      text: "¿Qué efecto tiene declarar una clase como `final` en Java?",
+      options: [
+        "La clase no puede tener métodos públicos",
+        "La clase no puede ser instanciada con `new`",
+        "La clase no puede ser extendida por ninguna subclase",
+        "La clase solo puede tener atributos estáticos",
+      ],
+      correctAnswer: 2,
+      explanation: "Una clase `final` no puede ser subclaseada. En Java, `String` e `Integer` son `final`. Se usa cuando no se desea que nadie modifique el comportamiento a través de herencia.",
+    },
+    {
+      id: 19,
+      category: "Herencia",
+      text: "¿De qué clase heredan implícitamente todas las clases Java cuando no se declara `extends`?",
+      options: ["Base", "Class", "Object", "Root"],
+      correctAnswer: 2,
+      explanation: "Toda clase en Java hereda implícitamente de `java.lang.Object`. Por eso métodos como `toString()`, `equals()` y `hashCode()` están disponibles en cualquier objeto sin necesidad de declararlos.",
+    },
+    {
+      id: 20,
+      category: "Polimorfismo",
+      text: "Dado `Animal a = new Perro();`, ¿qué tipo usa Java al ejecutar `a.hablar()` si Perro lo sobreescribe?",
+      options: [
+        "El tipo declarado: Animal (se resuelve en compilación)",
+        "El tipo real del objeto: Perro (se resuelve en ejecución)",
+        "Depende del modificador de acceso del método",
+        "El último tipo asignado a la variable",
+      ],
+      correctAnswer: 1,
+      explanation: "Aunque la variable es de tipo `Animal`, Java usa el tipo real del objeto (`Perro`) en tiempo de ejecución. Esto es el 'dynamic dispatch': el motor de polimorfismo que decide qué implementación ejecutar.",
+    },
+    {
+      id: 21,
+      category: "Polimorfismo",
+      text: "La sobrecarga de métodos (overloading) en Java se resuelve en:",
+      options: [
+        "Tiempo de ejecución, según el tipo real del objeto",
+        "Tiempo de compilación, según el tipo declarado y los argumentos",
+        "Tiempo de carga de la JVM",
+        "Tiempo de linkeo entre clases",
+      ],
+      correctAnswer: 1,
+      explanation: "El overloading se resuelve en compilación: el compilador elige qué versión llamar según el tipo declarado de los argumentos. Es diferente al overriding, que usa polimorfismo dinámico en ejecución.",
+    },
+    {
+      id: 22,
+      category: "Encapsulamiento",
+      text: "¿Qué modificador de acceso permite que un atributo sea accesible en la misma clase Y en sus subclases, pero NO desde clases externas no relacionadas?",
+      options: ["public", "private", "default (sin modificador)", "protected"],
+      correctAnswer: 3,
+      explanation: "`protected` da acceso dentro del mismo paquete y desde subclases en cualquier paquete. Es el punto intermedio entre `private` (solo la clase) y `public` (acceso desde cualquier lugar).",
+    },
+    {
+      id: 23,
+      category: "Encapsulamiento",
+      text: "¿Cuál es el principal beneficio del encapsulamiento en el diseño de software?",
+      options: [
+        "Hacer el código más rápido en ejecución",
+        "Controlar el acceso a los datos y ocultar la implementación interna",
+        "Eliminar la necesidad de usar constructores",
+        "Permitir herencia múltiple entre clases",
+      ],
+      correctAnswer: 1,
+      explanation: "El encapsulamiento protege la integridad de los datos. Si cambias la implementación interna (ej: el tipo de un atributo), el código externo no se rompe siempre que mantengas la interfaz pública (getters/setters) igual.",
+    },
+    {
+      id: 24,
+      category: "Overriding",
+      text: "¿Es posible hacer override de un método `static` en Java?",
+      options: [
+        "Sí, funciona igual que con métodos de instancia",
+        "No, los métodos estáticos se vinculan en compilación y no admiten override real",
+        "Sí, pero solo usando la anotación @Override explícitamente",
+        "Solo si la subclase también declara el método como static",
+      ],
+      correctAnswer: 1,
+      explanation: "Los métodos `static` no admiten override real. Lo que parece un override es 'method hiding': la versión del hijo oculta la del padre, pero no hay polimorfismo dinámico. Si usas `@Override` sobre un método estático, el compilador da error.",
+    },
+    {
+      id: 25,
+      category: "Overriding",
+      text: "¿Qué método heredado de Object se suele sobrescribir para que `System.out.println(obj)` muestre información útil del objeto?",
+      options: ["print()", "show()", "display()", "toString()"],
+      correctAnswer: 3,
+      explanation: "`toString()` se hereda de Object y por defecto retorna algo como `Persona@1a2b3c`. Al sobrescribirlo puedes retornar `'Persona{nombre=Ana, edad=20}'`, lo cual es invaluable para depuración y logs.",
     },
   ],
 };
