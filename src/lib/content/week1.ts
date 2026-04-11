@@ -37,12 +37,22 @@ export interface ExamQuestion {
   category: string;
 }
 
+export interface PostmanTest {
+  method: "GET" | "POST" | "PUT" | "DELETE";
+  endpoint: string;
+  body?: string;
+  description: string;
+  response?: string;
+}
+
 export interface Recurso {
   title: string;
   description: string;
   filename: string;  // path under /recursos/
   password: string;
   fileLabel?: string;
+  baseUrl?: string;
+  postmanTests?: PostmanTest[];
 }
 
 export interface WeekContent {

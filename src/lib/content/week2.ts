@@ -1353,6 +1353,35 @@ GET /api/productos → (después del POST)
       filename: "s2-taller-api.zip",
       password: "semana02",
       fileLabel: "s2-taller-api.zip · ~8 KB",
+      baseUrl: "http://localhost:8080",
+      postmanTests: [
+        {
+          method: "GET",
+          endpoint: "/productos",
+          description: "Obtener lista completa de productos",
+          response: '200 · [ {...}, {...} ]',
+        },
+        {
+          method: "POST",
+          endpoint: "/productos",
+          body: '{"nombre":"...", "precio":0.0}',
+          description: "Crear un nuevo producto",
+          response: '200 · Producto creado',
+        },
+        {
+          method: "PUT",
+          endpoint: "/productos/{id}",
+          body: '{"nombre":"...", "precio":0.0}',
+          description: "Actualizar nombre y precio",
+          response: '200 · Producto actualizado',
+        },
+        {
+          method: "DELETE",
+          endpoint: "/productos/{id}",
+          description: "Eliminar un producto por ID",
+          response: '200 · "Producto eliminado"',
+        },
+      ],
     },
   ],
 };
