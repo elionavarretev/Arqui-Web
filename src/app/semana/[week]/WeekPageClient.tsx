@@ -2,20 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, BookOpen, Code2, GraduationCap } from "lucide-react";
+import { ChevronLeft, BookOpen, Code2, GraduationCap, Download } from "lucide-react";
 import ConceptPanel from "@/components/ConceptPanel";
 import CodeEditor from "@/components/CodeEditor";
 import LayeredCodeEditor from "@/components/LayeredCodeEditor";
 import ExamPanel from "@/components/ExamPanel";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
+import RecursosPanel from "@/components/RecursosPanel";
 import type { WeekContent } from "@/lib/content/week1";
 
 export default function WeekPageClient({ content }: { content: WeekContent }) {
   const [activeTab, setActiveTab] = useState(0);
   const [examKey, setExamKey] = useState(0);
   const [mobileView, setMobileView] = useState<"teoria" | "editor">("teoria");
-  const isExam = activeTab === content.exercises.length;
-  const exercise = isExam ? content.exercises[0] : content.exercises[activeTab];
+  const EXAM_TAB = content.exercises.length;
+  const RECURSOS_TAB = content.exercises.length + 1;
+  const isExam = activeTab === EXAM_TAB;
+  const isRecursos = activeTab === RECURSOS_TAB;
+  const exercise = (isExam || isRecursos) ? content.exercises[0] : content.exercises[activeTab];
 
   const conceptColors: Record<string, string> = {
     // Semana 1 — Java OO
@@ -77,7 +81,7 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
         })}
         {/* Exam tab */}
         <button
-          onClick={() => { setActiveTab(content.exercises.length); setExamKey(k => k + 1); }}
+          onClick={() => { setActiveTab(EXAM_TAB); setExamKey(k => k + 1); }}
           className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all whitespace-nowrap ml-2 ${
             isExam ? "text-white" : "text-slate-500 hover:text-slate-300"
           }`}
@@ -86,10 +90,23 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
           <GraduationCap size={12} />
           Examen
         </button>
+        {/* Recursos tab — only when week has recursos */}
+        {content.recursos && content.recursos.length > 0 && (
+          <button
+            onClick={() => setActiveTab(RECURSOS_TAB)}
+            className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all whitespace-nowrap ml-1 ${
+              isRecursos ? "text-white" : "text-slate-500 hover:text-slate-300"
+            }`}
+            style={isRecursos ? { background: "#10b98122", color: "#10b981", border: "1px solid #10b98144" } : {}}
+          >
+            <Download size={12} />
+            Recursos
+          </button>
+        )}
       </div>
 
       {/* Mobile toggle: Teoría / Editor (only for exercises) */}
-      {!isExam && (
+      {!isExam && !isRecursos && (
         <div className="flex-none md:hidden flex border-b border-slate-800 bg-[#0d0f18]">
           <button
             onClick={() => setMobileView("teoria")}
@@ -116,7 +133,7 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
 
       {/* Main layout */}
       <div className="flex-1 min-h-0 flex flex-col md:grid md:gap-0"
-        style={{ gridTemplateColumns: isExam ? "1fr" : "1fr 1fr" }}>
+        style={{ gridTemplateColumns: (isExam || isRecursos) ? "1fr" : "1fr 1fr" }}>
 
         {/* EXAM VIEW */}
         {isExam && (
@@ -125,8 +142,13 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
           </div>
         )}
 
+        {/* RECURSOS VIEW */}
+        {isRecursos && content.recursos && (
+          <RecursosPanel recursos={content.recursos} weekNumber={content.week} />
+        )}
+
         {/* Left: Concept */}
-        {!isExam && (
+        {!isExam && !isRecursos && (
           <div className={`md:border-r md:border-slate-800 md:p-6 md:overflow-y-auto md:block
             ${mobileView === "teoria" ? "flex flex-col flex-1 min-h-0 p-4 overflow-y-auto" : "hidden"}`}
           >
@@ -143,7 +165,7 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
         )}
 
         {/* Right: Editor */}
-        {!isExam && (
+        {!isExam && !isRecursos && (
           <div className={`md:p-4 md:overflow-hidden md:block
             ${mobileView === "editor" ? "flex flex-col flex-1 min-h-0 p-3 overflow-hidden" : "hidden"}`}
           >

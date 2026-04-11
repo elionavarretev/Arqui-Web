@@ -1346,4 +1346,13 @@ GET /api/productos → (después del POST)
       explanation: "Las URLs REST deben representar recursos (sustantivos), no acciones. '/api/usuarios/3/pedidos' expresa claramente: 'los pedidos del usuario 3'. Evita verbos en URLs (obtener, get, fetch) y query strings para identificar recursos.",
     },
   ] as ExamQuestion[],
+  recursos: [
+    {
+      title: "Proyecto Spring Boot — Taller S2",
+      description: "Proyecto Maven completo con Spring Web y DevTools. Contiene Producto.java, ProductoController.java y la aplicación principal. Ábrelo directamente en IntelliJ IDEA.",
+      filename: "s2-taller-api.zip",
+      password: "semana02",
+      fileLabel: "s2-taller-api.zip · ~8 KB",
+    },
+  ],
 };

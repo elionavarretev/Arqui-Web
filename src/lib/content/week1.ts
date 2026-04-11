@@ -37,12 +37,21 @@ export interface ExamQuestion {
   category: string;
 }
 
+export interface Recurso {
+  title: string;
+  description: string;
+  filename: string;  // path under /recursos/
+  password: string;
+  fileLabel?: string;
+}
+
 export interface WeekContent {
   week: number;
   title: string;
   description: string;
   exercises: Exercise[];
   exam: ExamQuestion[];
+  recursos?: Recurso[];
 }
 
 export const week1: WeekContent = {
