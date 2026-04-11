@@ -1357,27 +1357,27 @@ GET /api/productos → (después del POST)
       postmanTests: [
         {
           method: "GET",
-          endpoint: "/productos",
+          endpoint: "/api/productos",
           description: "Obtener lista completa de productos",
           response: '200 · [ {...}, {...} ]',
         },
         {
           method: "POST",
-          endpoint: "/productos",
+          endpoint: "/api/productos",
           body: '{"nombre":"...", "precio":0.0}',
           description: "Crear un nuevo producto",
           response: '200 · Producto creado',
         },
         {
           method: "PUT",
-          endpoint: "/productos/{id}",
+          endpoint: "/api/productos/{id}",
           body: '{"nombre":"...", "precio":0.0}',
           description: "Actualizar nombre y precio",
           response: '200 · Producto actualizado',
         },
         {
           method: "DELETE",
-          endpoint: "/productos/{id}",
+          endpoint: "/api/productos/{id}",
           description: "Eliminar un producto por ID",
           response: '200 · "Producto eliminado"',
         },
