@@ -2,6 +2,7 @@ export interface LayerTab {
   step: number;
   label: string;    // "1️⃣ @Entity"
   filename: string; // "Producto.java"
+  folder?: string;  // "entities" | "dto" | "repositories" | "services" | "controllers"
   role: string;     // "El modelo de datos → tabla en la BD"
   color: string;
   starterCode: string;
@@ -55,6 +56,35 @@ export interface Recurso {
   postmanTests?: PostmanTest[];
 }
 
+export interface PracticalTable {
+  name: string;
+  fields: string[];
+}
+
+export interface UserStory {
+  id: string;          // "HU01"
+  title: string;
+  description: string;
+  criteria: string[];
+  points: number;
+  promptPoints: number; // puntos "promedio"
+}
+
+export interface PracticalExam {
+  title: string;
+  context: string;
+  duration: number;    // minutos
+  points: number;      // puntos totales
+  technologies: string[];
+  tables: PracticalTable[];
+  userStories: UserStory[];
+  namingConventions: string[];
+  starterCode?: string;   // fallback: editor plano
+  solution?: string;
+  hint?: string;
+  layers?: LayerTab[];    // IDE por capas (IdeEditor)
+}
+
 export interface WeekContent {
   week: number;
   title: string;
@@ -62,6 +92,7 @@ export interface WeekContent {
   exercises: Exercise[];
   exam: ExamQuestion[];
   recursos?: Recurso[];
+  practicalExam?: PracticalExam;
 }
 
 export const week1: WeekContent = {

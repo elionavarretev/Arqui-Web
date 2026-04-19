@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, BookOpen, Code2, GraduationCap, Download } from "lucide-react";
+import { ChevronLeft, BookOpen, Code2, GraduationCap, Download, ClipboardList } from "lucide-react";
 import ConceptPanel from "@/components/ConceptPanel";
 import CodeEditor from "@/components/CodeEditor";
 import LayeredCodeEditor from "@/components/LayeredCodeEditor";
 import ExamPanel from "@/components/ExamPanel";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import RecursosPanel from "@/components/RecursosPanel";
+import PracticalExamPanel from "@/components/PracticalExamPanel";
+import IdeEditor from "@/components/IdeEditor";
 import type { WeekContent } from "@/lib/content/week1";
 
 export default function WeekPageClient({ content }: { content: WeekContent }) {
@@ -17,9 +19,11 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
   const [mobileView, setMobileView] = useState<"teoria" | "editor">("teoria");
   const EXAM_TAB = content.exercises.length;
   const RECURSOS_TAB = content.exercises.length + 1;
+  const PC1_TAB = content.exercises.length + 2;
   const isExam = activeTab === EXAM_TAB;
   const isRecursos = activeTab === RECURSOS_TAB;
-  const exercise = (isExam || isRecursos) ? content.exercises[0] : content.exercises[activeTab];
+  const isPC1 = activeTab === PC1_TAB;
+  const exercise = (isExam || isRecursos || isPC1) ? content.exercises[0] : content.exercises[activeTab];
 
   const conceptColors: Record<string, string> = {
     // Semana 1 — Java OO
@@ -103,9 +107,22 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
             Recursos
           </button>
         )}
+        {/* TallerPC tab — only when week has practicalExam */}
+        {content.practicalExam && (
+          <button
+            onClick={() => setActiveTab(PC1_TAB)}
+            className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all whitespace-nowrap ml-1 ${
+              isPC1 ? "text-white" : "text-slate-500 hover:text-slate-300"
+            }`}
+            style={isPC1 ? { background: "#ef444422", color: "#ef4444", border: "1px solid #ef444444" } : {}}
+          >
+            <ClipboardList size={12} />
+            TallerPC
+          </button>
+        )}
       </div>
 
-      {/* Mobile toggle: Teoría / Editor (only for exercises) */}
+      {/* Mobile toggle: Teoría / Editor (exercises + TallerPC) */}
       {!isExam && !isRecursos && (
         <div className="flex-none md:hidden flex border-b border-slate-800 bg-[#0d0f18]">
           <button
@@ -113,17 +130,17 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
               mobileView === "teoria" ? "text-white border-b-2" : "text-slate-500"
             }`}
-            style={mobileView === "teoria" ? { borderColor: color } : {}}
+            style={mobileView === "teoria" ? { borderColor: isPC1 ? "#ef4444" : color } : {}}
           >
             <BookOpen size={13} />
-            Teoría
+            {isPC1 ? "Enunciado" : "Teoría"}
           </button>
           <button
             onClick={() => setMobileView("editor")}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-xs font-medium transition-all ${
               mobileView === "editor" ? "text-white border-b-2" : "text-slate-500"
             }`}
-            style={mobileView === "editor" ? { borderColor: color } : {}}
+            style={mobileView === "editor" ? { borderColor: isPC1 ? "#ef4444" : color } : {}}
           >
             <Code2 size={13} />
             Editor
@@ -147,8 +164,36 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
           <RecursosPanel recursos={content.recursos} weekNumber={content.week} />
         )}
 
+        {/* TallerPC — LEFT: Enunciado */}
+        {isPC1 && content.practicalExam && (
+          <div className={`md:border-r md:border-slate-800 md:overflow-hidden md:block
+            ${mobileView === "teoria" ? "flex flex-col flex-1 min-h-0 overflow-hidden" : "hidden"}`}>
+            <PracticalExamPanel exam={content.practicalExam} />
+          </div>
+        )}
+
+        {/* TallerPC — RIGHT: Editor de código */}
+        {isPC1 && content.practicalExam && (
+          <div className={`md:p-4 md:overflow-hidden md:block
+            ${mobileView === "editor" ? "flex flex-col flex-1 min-h-0 p-3 overflow-hidden" : "hidden"}`}>
+            {content.practicalExam.layers && content.practicalExam.layers.length > 0 ? (
+              <IdeEditor
+                layers={content.practicalExam.layers}
+                projectName="pc1-musica"
+              />
+            ) : (
+              <CodeEditor
+                starterCode={content.practicalExam.starterCode ?? "// Escribe tu solución aquí"}
+                solution={content.practicalExam.solution ?? ""}
+                hint={content.practicalExam.hint ?? ""}
+                expectedOutput=""
+              />
+            )}
+          </div>
+        )}
+
         {/* Left: Concept */}
-        {!isExam && !isRecursos && (
+        {!isExam && !isRecursos && !isPC1 && (
           <div className={`md:border-r md:border-slate-800 md:p-6 md:overflow-y-auto md:block
             ${mobileView === "teoria" ? "flex flex-col flex-1 min-h-0 p-4 overflow-y-auto" : "hidden"}`}
           >
@@ -165,7 +210,7 @@ export default function WeekPageClient({ content }: { content: WeekContent }) {
         )}
 
         {/* Right: Editor */}
-        {!isExam && !isRecursos && (
+        {!isExam && !isRecursos && !isPC1 && (
           <div className={`md:p-4 md:overflow-hidden md:block
             ${mobileView === "editor" ? "flex flex-col flex-1 min-h-0 p-3 overflow-hidden" : "hidden"}`}
           >
