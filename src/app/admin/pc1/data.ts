@@ -385,204 +385,6 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
     </thead>
     <tbody>
       <tr>
-        <td class="pc">31</td>
-        <td class="code">20231D360</td>
-        <td class="name">Stefany Alexandra Peña Castro</td>
-        <td class="comp">31</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="29/30 correctas">4.83</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num good">3</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">15</td>
-        <td class="total total20">19.83</td>
-        <td class="total tot-good">20.0</td>
-        <td class="bd">sapcBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">12</td>
-        <td class="code">202210865</td>
-        <td class="name">Miguel Nicolás Mendoza Guzmán</td>
-        <td class="comp">12</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14.5</td>
-        <td class="total total20">19.5</td>
-        <td class="total tot-good">19.5</td>
-        <td class="bd">mnmgBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">36</td>
-        <td class="code">202321121</td>
-        <td class="name">Sebastian Jose Medina Mayo</td>
-        <td class="comp">36</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14.5</td>
-        <td class="total total20">19.5</td>
-        <td class="total tot-good">19.5</td>
-        <td class="bd">sjmmBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">33</td>
-        <td class="code">202316121</td>
-        <td class="name">José David Falcón Alzamora</td>
-        <td class="comp">33</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="27/30 correctas">4.5</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14.5</td>
-        <td class="total total20">19.0</td>
-        <td class="total tot-good">19.0</td>
-        <td class="bd">jdfaBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">40</td>
-        <td class="code">202313130</td>
-        <td class="name">Bryan Jimmy Tuesta Gutierrez</td>
-        <td class="comp">40</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14</td>
-        <td class="total total20">19.0</td>
-        <td class="total tot-good">19.0</td>
-        <td class="bd">bjtgBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">28</td>
-        <td class="code">202322205</td>
-        <td class="name">Jair Alonso Mauricio Pezo</td>
-        <td class="comp">28</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14</td>
-        <td class="total total20">19.0</td>
-        <td class="total tot-good">19.0</td>
-        <td class="bd">jampBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">24</td>
-        <td class="code">202318072</td>
-        <td class="name">Lucia Belen Jimenez Pinto</td>
-        <td class="comp">24</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria " title="24/30 correctas">4.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">14</td>
-        <td class="total total20">18.0</td>
-        <td class="total tot-good">18.0</td>
-        <td class="bd">lbjpBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">01</td>
-        <td class="code">201919914</td>
-        <td class="name">Kenneth Pedro Chipana Zambrano</td>
-        <td class="comp">01</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">13</td>
-        <td class="total total20">17.67</td>
-        <td class="total tot-good">18.0</td>
-        <td class="bd">kpchzBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">30</td>
-        <td class="code">20231C956</td>
-        <td class="name">Isaac Bequer Garay Obregón</td>
-        <td class="comp">30</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num good">2</td>
-        <td class="num low">0</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">12.5</td>
-        <td class="total total20">17.17</td>
-        <td class="total tot-good">17.5</td>
-        <td class="bd">ibgoBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
         <td class="pc">39</td>
         <td class="code">202217518</td>
         <td class="name">Jhair Joseph Alarcon Choque</td>
@@ -604,182 +406,13 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="check">✓</td>
         <td class="check">✓</td>
     </tr>
-<tr>
-        <td class="pc">29</td>
-        <td class="code">20231B990</td>
-        <td class="name">William Alexander Shicshe Conde</td>
-        <td class="comp">29</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num neg">-1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">12</td>
-        <td class="total total20">16.67</td>
-        <td class="total tot-good">17.0</td>
-        <td class="bd">wascBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">34</td>
-        <td class="code">202318333</td>
-        <td class="name">Jhanpier Carlos Fabian Joaquin</td>
-        <td class="comp">34</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num low">0</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">12</td>
-        <td class="total total20">17.0</td>
-        <td class="total tot-good">17.0</td>
-        <td class="bd">jfBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">17</td>
-        <td class="code">201922070</td>
-        <td class="name">Briggitte Teresa Esther Huangal Sanchez</td>
-        <td class="comp">17</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria " title="22/30 correctas">3.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">13</td>
-        <td class="total total20">16.67</td>
-        <td class="total tot-good">17.0</td>
-        <td class="bd">btehsBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">02</td>
-        <td class="code">202319425</td>
-        <td class="name">Cesar Fabrizzio Gamboa Vives</td>
-        <td class="comp">02</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="22/30 correctas">3.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">13</td>
-        <td class="total total20">16.67</td>
-        <td class="total tot-good">17.0</td>
-        <td class="bd">cfgvBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">09</td>
-        <td class="code">202218940</td>
-        <td class="name">Ryann Percy Santillana Llerena <span class="badge-delegado" title="Delegado del aula">DELEGADO</span></td>
-        <td class="comp">09</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="17/30 correctas">2.83</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">13</td>
-        <td class="total total20">15.83</td>
-        <td class="total tot-good">16.0</td>
-        <td class="bd"></td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">05</td>
-        <td class="code">202210500</td>
-        <td class="name">Augusto Sebastián Ríos Márquez</td>
-        <td class="comp">05</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="30/30 correctas">5.0</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num good">1</td>
-        <td class="num neg">-1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">11</td>
-        <td class="total total20">16.0</td>
-        <td class="total tot-good">16.0</td>
-        <td class="bd">srmBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">06</td>
-        <td class="code">202218480</td>
-        <td class="name">Fernando Gabriel Limaymanta Ore</td>
-        <td class="comp">06</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num neg">-1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">11</td>
-        <td class="total total20">15.67</td>
-        <td class="total tot-good">16.0</td>
-        <td class="bd">fgloBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">07</td>
-        <td class="code">202312361</td>
-        <td class="name">Flavio Roberto Ganiko Bardalez</td>
-        <td class="comp">07</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num low">0</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">9</td>
-        <td class="total total20">13.67</td>
-        <td class="total tot-good">14.0</td>
-        <td class="bd">frgbBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
+<tr class="not-delivered">
+            <td>—</td><td>202019907</td><td>Carlos Andre Alcantara Quispe</td><td>—</td><td>—</td>
+            <td colspan="11" class="na-msg">No rindió</td>
+            <td class="total tot-na">0</td>
+            <td class="total tot-na">0</td>
+            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        </tr>
 <tr>
         <td class="pc">18</td>
         <td class="code">20171F413</td>
@@ -799,248 +432,6 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="total total20">13.83</td>
         <td class="total tot-good">14.0</td>
         <td class="bd">sbauBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">14</td>
-        <td class="code">202311965</td>
-        <td class="name">Lorenzo Balicco Espinoza</td>
-        <td class="comp">14</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="22/30 correctas">3.67</td>
-        <td class="num low">0</td>
-        <td class="num good">2</td>
-        <td class="num low">0</td>
-        <td class="num good">3</td>
-        <td class="num neg">-1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">9.0</td>
-        <td class="total total20">12.67</td>
-        <td class="total tot-good">13.0</td>
-        <td class="bd">LBEPC01</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">04</td>
-        <td class="code">202012268</td>
-        <td class="name">Josue Alfonso Cavero Peña</td>
-        <td class="comp">04</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="27/30 correctas">4.5</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">8.5</td>
-        <td class="total total20">13.0</td>
-        <td class="total tot-good">13.0</td>
-        <td class="bd">jacpBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">10</td>
-        <td class="code">20241E898</td>
-        <td class="name">Jheanpiere Alejandro Cerdan Sigüeñas</td>
-        <td class="comp">10</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="28/30 correctas">4.67</td>
-        <td class="num good">2</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num low">0</td>
-        <td class="num neg">-1</td>
-        <td class="num neg">-1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">8.0</td>
-        <td class="total total20">12.67</td>
-        <td class="total tot-good">13.0</td>
-        <td class="bd">jacsBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">08</td>
-        <td class="code">20221C546</td>
-        <td class="name">Leguer Alvaro Silva Zamora</td>
-        <td class="comp">08</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria " title="22/30 correctas">3.67</td>
-        <td class="num low">0</td>
-        <td class="num ">1.5</td>
-        <td class="num good">3</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">9.0</td>
-        <td class="total total20">12.67</td>
-        <td class="total tot-good">13.0</td>
-        <td class="bd">laszBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">✓</td>
-    </tr>
-<tr>
-        <td class="pc">03</td>
-        <td class="code">202318726</td>
-        <td class="name">Katherine Naomi Meza Tupayachi</td>
-        <td class="comp">03</td>
-        <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria " title="24/30 correctas">4.0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">3</td>
-        <td class="num neg">-1</td>
-        <td class="num ">2</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">8.0</td>
-        <td class="total total20">12.0</td>
-        <td class="total tot-mid">12.0</td>
-        <td class="bd">knmtBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">32</td>
-        <td class="code">202312118</td>
-        <td class="name">Masiel Alejandra Callañaupa Aguilar</td>
-        <td class="comp">32</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="23/30 correctas">3.83</td>
-        <td class="num low">0</td>
-        <td class="num good">2</td>
-        <td class="num good">3</td>
-        <td class="num low">0</td>
-        <td class="num neg">-1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">6</td>
-        <td class="total total20">9.83</td>
-        <td class="total tot-mid">10.0</td>
-        <td class="bd">macaBDPC1</td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">27</td>
-        <td class="code">202213792</td>
-        <td class="name">Alan Joaquin Yauri Alcahuaman</td>
-        <td class="comp">27</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="22/30 correctas">3.67</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">6.0</td>
-        <td class="total total20">9.67</td>
-        <td class="total tot-mid">10.0</td>
-        <td class="bd">ajyaBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">13</td>
-        <td class="code">202210372</td>
-        <td class="name">Ariana Olenka Eche Caballero</td>
-        <td class="comp">13</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="21/30 correctas">3.5</td>
-        <td class="num low">0</td>
-        <td class="num good">2</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">2.5</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">6.5</td>
-        <td class="total total20">10.0</td>
-        <td class="total tot-mid">10.0</td>
-        <td class="bd">aoecBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">11</td>
-        <td class="code">20211G109</td>
-        <td class="name">Fabrizio Michell Caysedo Salvador</td>
-        <td class="comp">11</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria good" title="29/30 correctas">4.83</td>
-        <td class="num low">0</td>
-        <td class="num good">2</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num ">1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">5</td>
-        <td class="total total20">9.83</td>
-        <td class="total tot-mid">10.0</td>
-        <td class="bd">fmcsBDPC1</td>
-        <td class="check">✓</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">21</td>
-        <td class="code">202223894</td>
-        <td class="name">Alexandra Belen Casas Melgar</td>
-        <td class="comp">21</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="17/30 correctas">2.83</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">3</td>
-        <td class="num good">3</td>
-        <td class="num neg">-1</td>
-        <td class="num neg">-1</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">6.0</td>
-        <td class="total total20">8.83</td>
-        <td class="total tot-mid">9.0</td>
-        <td class="bd"></td>
-        <td class="check">·</td>
-        <td class="check">·</td>
-    </tr>
-<tr>
-        <td class="pc">20</td>
-        <td class="code">20211B774</td>
-        <td class="name">Samir Arlik Chavez Hernandez</td>
-        <td class="comp">20</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="18/30 correctas">3.0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num good">3</td>
-        <td class="num low">0</td>
-        <td class="num good">1</td>
-        <td class="num low">0</td>
-        <td class="num ">0</td>
-        <td class="num good">1</td>
-        <td class="num practica">5</td>
-        <td class="total total20">8.0</td>
-        <td class="total tot-mid">8.0</td>
-        <td class="bd"></td>
         <td class="check">✓</td>
         <td class="check">·</td>
     </tr>
@@ -1067,6 +458,321 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="check">·</td>
     </tr>
 <tr>
+        <td class="pc">14</td>
+        <td class="code">202311965</td>
+        <td class="name">Lorenzo Balicco Espinoza</td>
+        <td class="comp">14</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="22/30 correctas">3.67</td>
+        <td class="num low">0</td>
+        <td class="num good">2</td>
+        <td class="num low">0</td>
+        <td class="num good">3</td>
+        <td class="num neg">-1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">9.0</td>
+        <td class="total total20">12.67</td>
+        <td class="total tot-good">13.0</td>
+        <td class="bd">LBEPC01</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">32</td>
+        <td class="code">202312118</td>
+        <td class="name">Masiel Alejandra Callañaupa Aguilar</td>
+        <td class="comp">32</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="23/30 correctas">3.83</td>
+        <td class="num low">0</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num low">0</td>
+        <td class="num neg">-1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">6</td>
+        <td class="total total20">9.83</td>
+        <td class="total tot-mid">10.0</td>
+        <td class="bd">macaBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">21</td>
+        <td class="code">202223894</td>
+        <td class="name">Alexandra Belen Casas Melgar</td>
+        <td class="comp">21</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="17/30 correctas">2.83</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num neg">-1</td>
+        <td class="num neg">-1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">6.0</td>
+        <td class="total total20">8.83</td>
+        <td class="total tot-mid">9.0</td>
+        <td class="bd"></td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">04</td>
+        <td class="code">202012268</td>
+        <td class="name">Josue Alfonso Cavero Peña</td>
+        <td class="comp">04</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="27/30 correctas">4.5</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">8.5</td>
+        <td class="total total20">13.0</td>
+        <td class="total tot-good">13.0</td>
+        <td class="bd">jacpBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">11</td>
+        <td class="code">20211G109</td>
+        <td class="name">Fabrizio Michell Caysedo Salvador</td>
+        <td class="comp">11</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="29/30 correctas">4.83</td>
+        <td class="num low">0</td>
+        <td class="num good">2</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">5</td>
+        <td class="total total20">9.83</td>
+        <td class="total tot-mid">10.0</td>
+        <td class="bd">fmcsBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">10</td>
+        <td class="code">20241E898</td>
+        <td class="name">Jheanpiere Alejandro Cerdan Sigüeñas</td>
+        <td class="comp">10</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num low">0</td>
+        <td class="num neg">-1</td>
+        <td class="num neg">-1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">8.0</td>
+        <td class="total total20">12.67</td>
+        <td class="total tot-good">13.0</td>
+        <td class="bd">jacsBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">20</td>
+        <td class="code">20211B774</td>
+        <td class="name">Samir Arlik Chavez Hernandez</td>
+        <td class="comp">20</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="18/30 correctas">3.0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">3</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num low">0</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">5</td>
+        <td class="total total20">8.0</td>
+        <td class="total tot-mid">8.0</td>
+        <td class="bd"></td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">01</td>
+        <td class="code">201919914</td>
+        <td class="name">Kenneth Pedro Chipana Zambrano</td>
+        <td class="comp">01</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">13</td>
+        <td class="total total20">17.67</td>
+        <td class="total tot-good">18.0</td>
+        <td class="bd">kpchzBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">13</td>
+        <td class="code">202210372</td>
+        <td class="name">Ariana Olenka Eche Caballero</td>
+        <td class="comp">13</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="21/30 correctas">3.5</td>
+        <td class="num low">0</td>
+        <td class="num good">2</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">6.5</td>
+        <td class="total total20">10.0</td>
+        <td class="total tot-mid">10.0</td>
+        <td class="bd">aoecBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">34</td>
+        <td class="code">202318333</td>
+        <td class="name">Jhanpier Carlos Fabian Joaquin</td>
+        <td class="comp">34</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num low">0</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">12</td>
+        <td class="total total20">17.0</td>
+        <td class="total tot-good">17.0</td>
+        <td class="bd">jfBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">33</td>
+        <td class="code">202316121</td>
+        <td class="name">José David Falcón Alzamora</td>
+        <td class="comp">33</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="27/30 correctas">4.5</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">14.5</td>
+        <td class="total total20">19.0</td>
+        <td class="total tot-good">19.0</td>
+        <td class="bd">jdfaBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr class="not-delivered">
+            <td>—</td><td>201822245</td><td>Gustavo Eduardo Flores Apaza</td><td>—</td><td>—</td>
+            <td colspan="11" class="na-msg">No rindió</td>
+            <td class="total tot-na">0</td>
+            <td class="total tot-na">0</td>
+            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        </tr>
+<tr>
+        <td class="pc">02</td>
+        <td class="code">202319425</td>
+        <td class="name">Cesar Fabrizzio Gamboa Vives</td>
+        <td class="comp">02</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="22/30 correctas">3.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">13</td>
+        <td class="total total20">16.67</td>
+        <td class="total tot-good">17.0</td>
+        <td class="bd">cfgvBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">07</td>
+        <td class="code">202312361</td>
+        <td class="name">Flavio Roberto Ganiko Bardalez</td>
+        <td class="comp">07</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num low">0</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">9</td>
+        <td class="total total20">13.67</td>
+        <td class="total tot-good">14.0</td>
+        <td class="bd">frgbBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">30</td>
+        <td class="code">20231C956</td>
+        <td class="name">Isaac Bequer Garay Obregón</td>
+        <td class="comp">30</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num good">2</td>
+        <td class="num low">0</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">12.5</td>
+        <td class="total total20">17.17</td>
+        <td class="total tot-good">17.5</td>
+        <td class="bd">ibgoBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
         <td class="pc">26</td>
         <td class="code">202010188</td>
         <td class="name">Gabriel Andre Gutierrez Sanchez</td>
@@ -1089,48 +795,158 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="check">·</td>
     </tr>
 <tr>
-        <td class="pc">15</td>
-        <td class="code">201925834</td>
-        <td class="name">Jorge Luis Ocrospoma Mori</td>
-        <td class="comp">15</td>
+        <td class="pc">17</td>
+        <td class="code">201922070</td>
+        <td class="name">Briggitte Teresa Esther Huangal Sanchez</td>
+        <td class="comp">17</td>
         <td><span class="ver ver-b">B</span></td>
-        <td class="num teoria good" title="29/30 correctas">4.83</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num neg">-1</td>
-        <td class="num neg">-1</td>
+        <td class="num teoria " title="22/30 correctas">3.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">1</td>
         <td class="num ">0</td>
         <td class="num good">1</td>
-        <td class="num practica">0.5</td>
-        <td class="total total20">5.33</td>
-        <td class="total tot-bad">5.5</td>
-        <td class="bd">jlomBDPC1</td>
+        <td class="num practica">13</td>
+        <td class="total total20">16.67</td>
+        <td class="total tot-good">17.0</td>
+        <td class="bd">btehsBDPC1</td>
         <td class="check">·</td>
         <td class="check">·</td>
     </tr>
 <tr>
-        <td class="pc">25</td>
-        <td class="code">202319709</td>
-        <td class="name">Omar Alonzo Rodrigo Calderon</td>
-        <td class="comp">25</td>
-        <td><span class="ver ver-a">A</span></td>
-        <td class="num teoria " title="20/30 correctas">3.33</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num low">0</td>
-        <td class="num neg">-1</td>
-        <td class="num low">0</td>
+        <td class="pc">24</td>
+        <td class="code">202318072</td>
+        <td class="name">Lucia Belen Jimenez Pinto</td>
+        <td class="comp">24</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria " title="24/30 correctas">4.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2</td>
         <td class="num ">0</td>
         <td class="num good">1</td>
-        <td class="num practica">1.5</td>
-        <td class="total total20">4.83</td>
-        <td class="total tot-bad">5.0</td>
-        <td class="bd">oarcBDPC1</td>
+        <td class="num practica">14</td>
+        <td class="total total20">18.0</td>
+        <td class="total tot-good">18.0</td>
+        <td class="bd">lbjpBDPC1</td>
         <td class="check">·</td>
         <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">06</td>
+        <td class="code">202218480</td>
+        <td class="name">Fernando Gabriel Limaymanta Ore</td>
+        <td class="comp">06</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num neg">-1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">11</td>
+        <td class="total total20">15.67</td>
+        <td class="total tot-good">16.0</td>
+        <td class="bd">fgloBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">28</td>
+        <td class="code">202322205</td>
+        <td class="name">Jair Alonso Mauricio Pezo</td>
+        <td class="comp">28</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">14</td>
+        <td class="total total20">19.0</td>
+        <td class="total tot-good">19.0</td>
+        <td class="bd">jampBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">36</td>
+        <td class="code">202321121</td>
+        <td class="name">Sebastian Jose Medina Mayo</td>
+        <td class="comp">36</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">14.5</td>
+        <td class="total total20">19.5</td>
+        <td class="total tot-good">19.5</td>
+        <td class="bd">sjmmBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">12</td>
+        <td class="code">202210865</td>
+        <td class="name">Miguel Nicolás Mendoza Guzmán</td>
+        <td class="comp">12</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">14.5</td>
+        <td class="total total20">19.5</td>
+        <td class="total tot-good">19.5</td>
+        <td class="bd">mnmgBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">03</td>
+        <td class="code">202318726</td>
+        <td class="name">Katherine Naomi Meza Tupayachi</td>
+        <td class="comp">03</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria " title="24/30 correctas">4.0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">3</td>
+        <td class="num neg">-1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">8.0</td>
+        <td class="total total20">12.0</td>
+        <td class="total tot-mid">12.0</td>
+        <td class="bd">knmtBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
     </tr>
 <tr>
         <td class="pc">19</td>
@@ -1155,6 +971,57 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="check">·</td>
     </tr>
 <tr>
+        <td class="pc">15</td>
+        <td class="code">201925834</td>
+        <td class="name">Jorge Luis Ocrospoma Mori</td>
+        <td class="comp">15</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="29/30 correctas">4.83</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num neg">-1</td>
+        <td class="num neg">-1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">0.5</td>
+        <td class="total total20">5.33</td>
+        <td class="total tot-bad">5.5</td>
+        <td class="bd">jlomBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr class="presente-sin-entrega">
+            <td>—</td><td>202323910</td><td>Mathias Andree Ore Julca <span class="badge-presente" title="Estuvo presente. Guardó archivo en disco local, no en carpeta compartida del laboratorio.">PRESENTE · SIN ENTREGA</span></td><td>—</td><td>—</td>
+            <td colspan="11" class="na-msg">Estuvo presente pero no dejó entrega válida en la carpeta compartida</td>
+            <td class="total tot-bad">0</td>
+            <td class="total tot-bad">0</td>
+            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
+        </tr>
+<tr>
+        <td class="pc">31</td>
+        <td class="code">20231D360</td>
+        <td class="name">Stefany Alexandra Peña Castro</td>
+        <td class="comp">31</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="29/30 correctas">4.83</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num good">3</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">15</td>
+        <td class="total total20">19.83</td>
+        <td class="total tot-good">20.0</td>
+        <td class="bd">sapcBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
         <td class="pc">16</td>
         <td class="code">20231B927</td>
         <td class="name">Ayrton Jhonny Quiroz Sucno</td>
@@ -1176,27 +1043,94 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="check">·</td>
         <td class="check">·</td>
     </tr>
-<tr class="presente-sin-entrega">
-            <td>—</td><td>202323910</td><td>Mathias Andree Ore Julca <span class="badge-presente" title="Estuvo presente. Guardó archivo en disco local, no en carpeta compartida del laboratorio.">PRESENTE · SIN ENTREGA</span></td><td>—</td><td>—</td>
-            <td colspan="11" class="na-msg">Estuvo presente pero no dejó entrega válida en la carpeta compartida</td>
-            <td class="total tot-bad">0</td>
-            <td class="total tot-bad">0</td>
-            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
-        </tr>
-<tr class="not-delivered">
-            <td>—</td><td>201822245</td><td>Gustavo Eduardo Flores Apaza</td><td>—</td><td>—</td>
-            <td colspan="11" class="na-msg">No rindió</td>
-            <td class="total tot-na">0</td>
-            <td class="total tot-na">0</td>
-            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
-        </tr>
-<tr class="not-delivered">
-            <td>—</td><td>202019907</td><td>Carlos Andre Alcantara Quispe</td><td>—</td><td>—</td>
-            <td colspan="11" class="na-msg">No rindió</td>
-            <td class="total tot-na">0</td>
-            <td class="total tot-na">0</td>
-            <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
-        </tr>
+<tr>
+        <td class="pc">05</td>
+        <td class="code">202210500</td>
+        <td class="name">Augusto Sebastián Ríos Márquez</td>
+        <td class="comp">05</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num neg">-1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">11</td>
+        <td class="total total20">16.0</td>
+        <td class="total tot-good">16.0</td>
+        <td class="bd">srmBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">25</td>
+        <td class="code">202319709</td>
+        <td class="name">Omar Alonzo Rodrigo Calderon</td>
+        <td class="comp">25</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="20/30 correctas">3.33</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num neg">-1</td>
+        <td class="num low">0</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">1.5</td>
+        <td class="total total20">4.83</td>
+        <td class="total tot-bad">5.0</td>
+        <td class="bd">oarcBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">09</td>
+        <td class="code">202218940</td>
+        <td class="name">Ryann Percy Santillana Llerena <span class="badge-delegado" title="Delegado del aula">DELEGADO</span></td>
+        <td class="comp">09</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="17/30 correctas">2.83</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">1</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">13</td>
+        <td class="total total20">15.83</td>
+        <td class="total tot-good">16.0</td>
+        <td class="bd"></td>
+        <td class="check">·</td>
+        <td class="check">·</td>
+    </tr>
+<tr>
+        <td class="pc">29</td>
+        <td class="code">20231B990</td>
+        <td class="name">William Alexander Shicshe Conde</td>
+        <td class="comp">29</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria good" title="28/30 correctas">4.67</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num neg">-1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">12</td>
+        <td class="total total20">16.67</td>
+        <td class="total tot-good">17.0</td>
+        <td class="bd">wascBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
 <tr class="not-delivered">
             <td>—</td><td>20211C030</td><td>Jose Daniel Shuan Saavedra</td><td>—</td><td>—</td>
             <td colspan="11" class="na-msg">No rindió</td>
@@ -1204,6 +1138,72 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
             <td class="total tot-na">0</td>
             <td class="dim">—</td><td class="dim">—</td><td class="dim">—</td>
         </tr>
+<tr>
+        <td class="pc">08</td>
+        <td class="code">20221C546</td>
+        <td class="name">Leguer Alvaro Silva Zamora</td>
+        <td class="comp">08</td>
+        <td><span class="ver ver-b">B</span></td>
+        <td class="num teoria " title="22/30 correctas">3.67</td>
+        <td class="num low">0</td>
+        <td class="num ">1.5</td>
+        <td class="num good">3</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">9.0</td>
+        <td class="total total20">12.67</td>
+        <td class="total tot-good">13.0</td>
+        <td class="bd">laszBDPC1</td>
+        <td class="check">·</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">40</td>
+        <td class="code">202313130</td>
+        <td class="name">Bryan Jimmy Tuesta Gutierrez</td>
+        <td class="comp">40</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria good" title="30/30 correctas">5.0</td>
+        <td class="num good">2</td>
+        <td class="num good">2</td>
+        <td class="num good">3</td>
+        <td class="num good">3</td>
+        <td class="num good">1</td>
+        <td class="num ">2</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">14</td>
+        <td class="total total20">19.0</td>
+        <td class="total tot-good">19.0</td>
+        <td class="bd">bjtgBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+    </tr>
+<tr>
+        <td class="pc">27</td>
+        <td class="code">202213792</td>
+        <td class="name">Alan Joaquin Yauri Alcahuaman</td>
+        <td class="comp">27</td>
+        <td><span class="ver ver-a">A</span></td>
+        <td class="num teoria " title="22/30 correctas">3.67</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num low">0</td>
+        <td class="num good">1</td>
+        <td class="num ">2.5</td>
+        <td class="num ">0</td>
+        <td class="num good">1</td>
+        <td class="num practica">6.0</td>
+        <td class="total total20">9.67</td>
+        <td class="total tot-mid">10.0</td>
+        <td class="bd">ajyaBDPC1</td>
+        <td class="check">✓</td>
+        <td class="check">·</td>
+    </tr>
     </tbody>
   </table>
 </div>
