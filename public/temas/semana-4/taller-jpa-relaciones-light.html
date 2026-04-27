@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller · Relaciones JPA — Autor y Libros</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/darcula.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --panel: #f8fafc;
+    --panel-2: #f1f5f9;
+    --border: #d1d5db;
+    --text: #0f172a;
+    --muted: #475569;
+    --accent: #047857;
+    --accent-2: #4338ca;
+    --warn: #b45309;
+    --danger: #b91c1c;
+    --code-bg: #0f172a;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body {
+    background: var(--bg) !important;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .kicker {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  h1 {
+    margin: 6px 0 12px;
+    font-size: 28px;
+    line-height: 1.25;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .meta span {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .tldr {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 24px 0 32px;
+  }
+  .tldr p { margin: 4px 0; }
+  .tldr strong { color: var(--accent); }
+  h2 {
+    font-size: 20px;
+    margin-top: 48px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .num {
+    background: var(--accent-2);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 15px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  p { margin: 12px 0; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--panel-2);
+    color: #fbbf24;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  pre {
+    background: #2b2b2b !important;
+    border: 1px solid #1e1f22 !important;
+    padding: 16px 18px !important;
+    border-radius: 8px;
+  }
+  pre code,
+  pre code.hljs {
+    background: transparent !important;
+    padding: 0 !important;
+    color: #a9b7c6;
+    font-size: 13px;
+    display: block;
+  }
+  .filename {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    padding: 6px 12px;
+    border-radius: 8px 8px 0 0;
+    display: inline-block;
+  }
+  .filename + pre {
+    border-radius: 0 8px 8px 8px;
+    margin-top: 0;
+  }
+  .note {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .note::before {
+    content: "💡 ";
+  }
+  .checklist {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 20px 14px 40px;
+    margin: 16px 0;
+  }
+  .checklist li { margin: 6px 0; }
+  .diagram {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+  .rel-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .card {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    min-width: 160px;
+  }
+  .card .card-title {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .card ul { margin: 0; padding-left: 18px; color: var(--text); }
+  .card ul li { margin: 2px 0; }
+  .rel-arrow {
+    color: var(--accent-2);
+    font-family: ui-monospace, monospace;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+  }
+  .rel-arrow small {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .db-table {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-width: 200px;
+    overflow: hidden;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+  }
+  .db-table .db-head {
+    background: var(--code-bg);
+    padding: 8px 14px;
+    color: var(--accent-2);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .db-table .db-row {
+    padding: 6px 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .db-table .db-row:last-child { border-bottom: none; }
+  .db-table .db-row .pk { color: var(--accent); font-size: 10px; letter-spacing: 1px; }
+  .db-table .db-row .fk { color: var(--warn); font-size: 10px; letter-spacing: 1px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  table th, table td {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: left;
+  }
+  table th {
+    background: var(--panel);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .method { font-weight: 700; }
+  .get { color: #38bdf8; }
+  .post { color: #34d399; }
+  .put { color: #fbbf24; }
+  .delete { color: #f87171; }
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* ──────────── Imprimir / PDF ──────────── */
+  @page {
+    size: A4;
+    margin: 12mm 10mm;
+    background: var(--bg);
+  }
+  @media print {
+    html, body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+    }
+    .wrap { padding: 0; max-width: 100%; }
+    pre, .diagram, .db-table, .card, .tldr, .note, .checklist, table {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    h2 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    a { color: var(--accent) !important; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">UPC · ASI705 · Semana 4 (complemento Semana 3)</div>
+  <h1>Taller paso a paso: Relaciones JPA con <code>@OneToMany</code> y <code>@ManyToOne</code></h1>
+  <div class="meta">
+    <span>⏱ 90 min</span>
+    <span>🧪 Nivel: intermedio</span>
+    <span>📦 Spring Boot · JPA · PostgreSQL</span>
+  </div>
+</header>
+
+<div class="tldr">
+  <p><strong>¿Qué vas a construir?</strong> Una API REST en Spring Boot con arquitectura completa en capas: <code>Entity → DTO → Repository → Service → Controller</code>. Dos entidades relacionadas: <code>Autor</code> y <code>Libro</code> (1:N).</p>
+  <p><strong>¿Qué vas a aprender?</strong> A mapear relaciones JPA con <code>@OneToMany</code> / <code>@ManyToOne</code>, a separar el modelo de BD del contrato HTTP usando <strong>DTOs</strong>, a colocar la lógica de negocio en <code>@Service</code> con <code>@Transactional</code>, y a hacer consultas derivadas sin escribir SQL.</p>
+  <p><strong>Requisitos previos:</strong> haber completado el taller de S3 (entidades y repositorios básicos).</p>
+</div>
+
+<!-- ──────────────────── PASO 1 ──────────────────── -->
+<h2><span class="num">1</span> Preparar el proyecto</h2>
+
+<p>Partimos del mismo proyecto que usaste en Semana 3. Si lo perdiste, crea uno nuevo en <a href="https://start.spring.io" style="color:var(--accent)">Spring Initializr</a> con estas dependencias:</p>
+
+<ul class="checklist">
+  <li>Spring Web</li>
+  <li>Spring Boot DevTools</li>
+  <li>Spring Data JPA</li>
+  <li>PostgreSQL Driver</li>
+  <li>Lombok</li>
+</ul>
+
+<p>Además, agrega manualmente en <code>pom.xml</code> la dependencia de Swagger (no aparece en Initializr):</p>
+
+<span class="filename">pom.xml</span>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.5.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+<h3>application.properties</h3>
+<p>Crea una base nueva llamada <code>biblioteca_db</code> en PostgreSQL y configúrala:</p>
+
+<span class="filename">src/main/resources/application.properties</span>
+<pre><code class="language-properties">spring.datasource.url=jdbc:postgresql://localhost:5432/biblioteca_db
+spring.datasource.username=postgres
+spring.datasource.password=tu_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true</code></pre>
+
+<div class="note"><code>ddl-auto=update</code> hace que Hibernate cree y modifique las tablas automáticamente a partir de tus entidades. En producción se usa <code>validate</code> o migraciones (Flyway), pero para clase <code>update</code> es cómodo.</div>
+
+<!-- ──────────────────── PASO 2 ──────────────────── -->
+<h2><span class="num">2</span> Modelo mental — ¿qué es una relación <code>1:N</code>?</h2>
+
+<p>En la vida real:</p>
+
+<div class="diagram">
+  <div class="rel-visual">
+    <div class="card">
+      <div class="card-title">Autor (1)</div>
+      Gabriel García Márquez
+    </div>
+    <div class="rel-arrow">
+      ⟶
+      <small>tiene muchos</small>
+    </div>
+    <div class="card">
+      <div class="card-title">Libros (N)</div>
+      <ul>
+        <li>Cien años de soledad</li>
+        <li>El amor en los tiempos del cólera</li>
+        <li>Crónica de una muerte anunciada</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p>En la base de datos se traduce a dos tablas, donde la tabla "hija" guarda la referencia al padre por medio de una <strong>llave foránea (FK)</strong>:</p>
+
+<div class="diagram">
+  <div class="rel-visual">
+    <div class="db-table">
+      <div class="db-head">autor</div>
+      <div class="db-row"><span>id</span><span class="pk">PK</span></div>
+      <div class="db-row"><span>nombre</span></div>
+      <div class="db-row"><span>nacionalidad</span></div>
+    </div>
+    <div class="rel-arrow">
+      ⟵
+      <small>autor_id</small>
+    </div>
+    <div class="db-table">
+      <div class="db-head">libro</div>
+      <div class="db-row"><span>id</span><span class="pk">PK</span></div>
+      <div class="db-row"><span>titulo</span></div>
+      <div class="db-row"><span>anio</span></div>
+      <div class="db-row"><span>autor_id</span><span class="fk">FK</span></div>
+    </div>
+  </div>
+</div>
+
+<p>JPA mapea esto con dos anotaciones clave:</p>
+<ul>
+  <li><code>@ManyToOne</code> del lado <strong>Libro</strong> — "muchos libros pertenecen a un autor"</li>
+  <li><code>@OneToMany</code> del lado <strong>Autor</strong> — "un autor tiene muchos libros"</li>
+</ul>
+
+<div class="note">La <strong>FK siempre vive en el lado <code>@ManyToOne</code></strong> (el lado "N"). El lado <code>@OneToMany</code> solo refleja la relación, no crea columnas nuevas.</div>
+
+<!-- ──────────────────── PASO 3 ──────────────────── -->
+<h2><span class="num">3</span> Entidad <code>Autor</code></h2>
+
+<span class="filename">src/main/java/com/tuempresa/biblioteca/entities/Autor.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.entities;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "autor")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class Autor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
+    private String nombre;
+
+    @Column(length = 60)
+    private String nacionalidad;
+
+    @OneToMany(
+        mappedBy = "autor",        // &lt;-- el campo "autor" de Libro es el dueño
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List&lt;Libro&gt; libros = new ArrayList&lt;&gt;();
+}</code></pre>
+
+<h3>¿Por qué cada anotación?</h3>
+<table>
+  <thead><tr><th>Anotación</th><th>Para qué sirve</th></tr></thead>
+  <tbody>
+    <tr><td><code>mappedBy = "autor"</code></td><td>Indica que la FK está en el campo <code>autor</code> de <code>Libro</code>. Evita crear una tabla extra.</td></tr>
+    <tr><td><code>cascade = ALL</code></td><td>Si guardas un autor con libros nuevos, los libros se guardan solos.</td></tr>
+    <tr><td><code>orphanRemoval = true</code></td><td>Si quitas un libro de la lista, se borra de la BD (no se queda huérfano).</td></tr>
+  </tbody>
+</table>
+
+<div class="note">No necesitamos <code>@JsonManagedReference</code> / <code>@JsonBackReference</code> porque nunca devolveremos la entidad por la API: siempre retornamos un DTO (siguiente paso). Eso rompe el ciclo sin anotaciones extra.</div>
+
+<!-- ──────────────────── PASO 4 ──────────────────── -->
+<h2><span class="num">4</span> Entidad <code>Libro</code> (el lado dueño)</h2>
+
+<span class="filename">src/main/java/com/tuempresa/biblioteca/entities/Libro.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.entities;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "libro")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class Libro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 200)
+    private String titulo;
+
+    @Column(nullable = false)
+    private Integer anio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "autor_id", nullable = false)  // &lt;-- columna FK real
+    private Autor autor;
+}</code></pre>
+
+<div class="note"><code>fetch = LAZY</code> evita traer al autor (y toda su lista de libros) cada vez que cargas un Libro. Carga el autor solo si lo pides explícitamente.</div>
+
+<h3>¿Cuándo usar <code>@Column</code> y cuándo <code>@Column(name = "...")</code>?</h3>
+
+<p>Duda muy común: "profe, ¿por qué <code>nombre</code> tiene <code>@Column</code> y <code>libros</code> no?" o "¿por qué aquí va <code>name = "..."</code> y aquí no?". Regla simple:</p>
+
+<table>
+  <thead>
+    <tr><th>Situación</th><th>Qué escribir</th><th>Por qué</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>El campo existe y quieres los defaults (VARCHAR(255), nullable, columna = mismo nombre)</td>
+      <td><em>Nada, omite <code>@Column</code></em></td>
+      <td>JPA ya aplica todo eso por defecto. Agregar <code>@Column</code> sin parámetros es ruido.</td>
+    </tr>
+    <tr>
+      <td>Quieres restringir el campo (no nulo, longitud, unique)</td>
+      <td><code>@Column(nullable = false, length = 100)</code></td>
+      <td>Solo especificas los parámetros que cambian respecto al default.</td>
+    </tr>
+    <tr>
+      <td>El campo es camelCase en Java pero quieres snake_case en la BD</td>
+      <td><code>@Column(name = "fecha_publicacion")</code> sobre <code>private LocalDate fechaPublicacion</code></td>
+      <td>Hibernate no convierte camelCase automáticamente (salvo que configures un naming strategy). Por eso debes nombrar la columna explícitamente.</td>
+    </tr>
+    <tr>
+      <td>El nombre del campo coincide con una palabra reservada de SQL (<code>user</code>, <code>order</code>, <code>group</code>)</td>
+      <td><code>@Column(name = "usuario")</code></td>
+      <td>Evita errores de sintaxis SQL al generar las queries.</td>
+    </tr>
+    <tr>
+      <td>El campo es una relación (<code>@OneToMany</code>, <code>@ManyToOne</code>)</td>
+      <td>No usar <code>@Column</code> ahí</td>
+      <td>Las relaciones se mapean con <code>@JoinColumn</code> (para FK) o con <code>mappedBy</code> (para el lado inverso). <code>@Column</code> es solo para columnas escalares.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">En nuestro taller: <code>id</code> no lleva <code>@Column</code> porque <code>@Id + @GeneratedValue</code> ya lo configuran. <code>nombre</code> lleva <code>@Column(nullable = false, length = 100)</code> porque queremos esas restricciones. <code>nacionalidad</code> lleva <code>@Column(length = 60)</code> para acotar el tamaño. <code>libros</code> no lleva <code>@Column</code> porque es una relación (<code>@OneToMany</code>).</div>
+
+<h3>Lo que Hibernate genera en PostgreSQL</h3>
+<pre><code class="language-sql">CREATE TABLE autor (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    nacionalidad VARCHAR(255)
+);
+
+CREATE TABLE libro (
+    id BIGSERIAL PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    anio INTEGER,
+    autor_id BIGINT NOT NULL REFERENCES autor(id)
+);</code></pre>
+
+<!-- ──────────────────── PASO 5 ──────────────────── -->
+<h2><span class="num">5</span> DTOs (Data Transfer Object)</h2>
+
+<p>La <strong>entidad</strong> modela la tabla de la base de datos. El <strong>DTO</strong> modela el contrato entre tu API y quien la consume (Postman, una app web, otro microservicio). Son cosas distintas y deben estar en clases distintas.</p>
+
+<h3>¿Por qué separar entidad y DTO?</h3>
+<ul class="checklist">
+  <li>La entidad puede tener relaciones bidireccionales (Autor↔Libro) que, si las serializas directo, generan un loop infinito al convertir a JSON.</li>
+  <li>La entidad puede tener campos sensibles o internos que no deberías exponer (ej. <code>password</code>, <code>deletedAt</code>).</li>
+  <li>El contrato de la API debe ser estable: si mañana cambias una columna de la BD, no deberías romper a los clientes.</li>
+  <li>Rosa (y el sílabo del curso) lo exigen explícitamente en la PC1.</li>
+</ul>
+
+<div class="note">Con DTO, el flujo es: <code>Entity</code> vive en la capa de persistencia, el <code>DTO</code> viaja por HTTP. El mapeo <code>Entity ↔ DTO</code> lo hace el Service (paso 7).</div>
+
+<h3>DTO del Autor</h3>
+<span class="filename">.../dtos/AutorDTO.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.dtos;
+
+import com.tuempresa.biblioteca.entities.Autor;
+import lombok.*;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class AutorDTO {
+
+    private Long id;
+    private String nombre;
+    private String nacionalidad;
+    private List&lt;LibroDTO&gt; libros;
+
+    // Entity -&gt; DTO
+    public static AutorDTO fromEntity(Autor a) {
+        List&lt;LibroDTO&gt; libros = a.getLibros() == null ? List.of()
+            : a.getLibros().stream()
+                .map(LibroDTO::fromEntity)
+                .collect(Collectors.toList());
+        return new AutorDTO(a.getId(), a.getNombre(), a.getNacionalidad(), libros);
+    }
+
+    // DTO -&gt; Entity (sin libros: los libros se crean por separado vía LibroService)
+    public Autor toEntity() {
+        Autor a = new Autor();
+        a.setId(this.id);
+        a.setNombre(this.nombre);
+        a.setNacionalidad(this.nacionalidad);
+        return a;
+    }
+}</code></pre>
+
+<h3>DTO del Libro</h3>
+<span class="filename">.../dtos/LibroDTO.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.dtos;
+
+import com.tuempresa.biblioteca.entities.Libro;
+import lombok.*;
+
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class LibroDTO {
+
+    private Long id;
+    private String titulo;
+    private Integer anio;
+    private Long autorId;        // &lt;-- solo el ID del autor, NO la entidad completa
+
+    public static LibroDTO fromEntity(Libro l) {
+        Long aid = l.getAutor() == null ? null : l.getAutor().getId();
+        return new LibroDTO(l.getId(), l.getTitulo(), l.getAnio(), aid);
+    }
+
+    public Libro toEntity() {
+        Libro l = new Libro();
+        l.setId(this.id);
+        l.setTitulo(this.titulo);
+        l.setAnio(this.anio);
+        // autor lo asigna el Service buscando por autorId
+        return l;
+    }
+}</code></pre>
+
+<div class="note">Observa que <code>LibroDTO</code> expone <code>autorId</code> (un <code>Long</code>), no una referencia a <code>Autor</code>. Eso rompe el ciclo Autor→Libro→Autor y hace el JSON plano y legible.</div>
+
+<!-- ──────────────────── PASO 6 ──────────────────── -->
+<h2><span class="num">6</span> Repositorios</h2>
+
+<p>Dos repositorios muy simples. Spring Data JPA genera las implementaciones solo.</p>
+
+<span class="filename">.../repositories/AutorRepository.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.repositories;
+
+import com.tuempresa.biblioteca.entities.Autor;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AutorRepository extends JpaRepository&lt;Autor, Long&gt; { }</code></pre>
+
+<span class="filename">.../repositories/LibroRepository.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.repositories;
+
+import com.tuempresa.biblioteca.entities.Libro;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface LibroRepository extends JpaRepository&lt;Libro, Long&gt; {
+
+    // Consulta derivada: Spring la construye a partir del nombre del método.
+    List&lt;Libro&gt; findByAutorId(Long autorId);
+
+    // Otra consulta derivada: buscar por título (like, ignorando mayúsculas).
+    List&lt;Libro&gt; findByTituloContainingIgnoreCase(String fragmento);
+}</code></pre>
+
+<div class="note">Los nombres <code>findByAutorId</code> y <code>findByTituloContainingIgnoreCase</code> no son casualidad: Spring Data los parsea y genera el SQL. La convención es <code>findBy</code> + nombre del atributo + operadores (<code>Containing</code>, <code>IgnoreCase</code>, <code>GreaterThan</code>, etc.).</div>
+
+<!-- ──────────────────── PASO 7 ──────────────────── -->
+<h2><span class="num">7</span> Services (lógica de negocio + mapeo)</h2>
+
+<p>El <strong>Service</strong> es la capa que contiene la lógica del caso de uso. Es quien:</p>
+<ul class="checklist">
+  <li>Llama al repositorio para leer o escribir.</li>
+  <li>Convierte entidades a DTOs y viceversa.</li>
+  <li>Valida reglas de negocio (por ejemplo, "no crear libro si el autor no existe").</li>
+  <li>Se anota con <code>@Service</code> para que Spring lo registre.</li>
+</ul>
+
+<p>El <strong>Controller</strong> delega todo al Service y nunca toca el Repository directamente.</p>
+
+<h3>AutorService</h3>
+<span class="filename">.../services/AutorService.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.services;
+
+import com.tuempresa.biblioteca.dtos.AutorDTO;
+import com.tuempresa.biblioteca.entities.Autor;
+import com.tuempresa.biblioteca.repositories.AutorRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class AutorService {
+
+    private final AutorRepository autorRepo;
+
+    public AutorService(AutorRepository autorRepo) {
+        this.autorRepo = autorRepo;
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;AutorDTO&gt; listar() {
+        return autorRepo.findAll().stream()
+            .map(AutorDTO::fromEntity)
+            .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public AutorDTO obtenerPorId(Long id) {
+        Autor a = autorRepo.findById(id)
+            .orElseThrow(() -&gt; new RuntimeException("Autor con id " + id + " no existe"));
+        return AutorDTO.fromEntity(a);
+    }
+
+    @Transactional
+    public AutorDTO crear(AutorDTO dto) {
+        Autor nuevo = dto.toEntity();
+        Autor guardado = autorRepo.save(nuevo);
+        return AutorDTO.fromEntity(guardado);
+    }
+}</code></pre>
+
+<h3>LibroService</h3>
+<span class="filename">.../services/LibroService.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.services;
+
+import com.tuempresa.biblioteca.dtos.LibroDTO;
+import com.tuempresa.biblioteca.entities.Autor;
+import com.tuempresa.biblioteca.entities.Libro;
+import com.tuempresa.biblioteca.repositories.AutorRepository;
+import com.tuempresa.biblioteca.repositories.LibroRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class LibroService {
+
+    private final LibroRepository libroRepo;
+    private final AutorRepository autorRepo;
+
+    public LibroService(LibroRepository libroRepo, AutorRepository autorRepo) {
+        this.libroRepo = libroRepo;
+        this.autorRepo = autorRepo;
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;LibroDTO&gt; listar() {
+        return libroRepo.findAll().stream()
+            .map(LibroDTO::fromEntity)
+            .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;LibroDTO&gt; porAutor(Long autorId) {
+        return libroRepo.findByAutorId(autorId).stream()
+            .map(LibroDTO::fromEntity)
+            .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;LibroDTO&gt; buscarPorTitulo(String q) {
+        return libroRepo.findByTituloContainingIgnoreCase(q).stream()
+            .map(LibroDTO::fromEntity)
+            .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public LibroDTO crearParaAutor(Long autorId, LibroDTO dto) {
+        Autor autor = autorRepo.findById(autorId)
+            .orElseThrow(() -&gt; new RuntimeException("Autor con id " + autorId + " no existe"));
+
+        Libro libro = dto.toEntity();
+        libro.setAutor(autor);
+        Libro guardado = libroRepo.save(libro);
+        return LibroDTO.fromEntity(guardado);
+    }
+}</code></pre>
+
+<div class="note"><code>@Transactional(readOnly = true)</code> en las consultas le dice a Hibernate que no abra transacción de escritura, lo que es más rápido. En métodos que modifican la BD usa <code>@Transactional</code> sin <code>readOnly</code>.</div>
+
+<!-- ──────────────────── PASO 8 ──────────────────── -->
+<h2><span class="num">8</span> Controllers (delegando al Service, devolviendo DTOs)</h2>
+
+<p>Los controllers ahora son delgados: reciben la request, delegan al service y devuelven DTOs. Nunca tocan el Repository ni la Entity directamente.</p>
+
+<span class="filename">.../controllers/AutorController.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.controllers;
+
+import com.tuempresa.biblioteca.dtos.AutorDTO;
+import com.tuempresa.biblioteca.services.AutorService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/autores")
+public class AutorController {
+
+    private final AutorService autorService;
+
+    public AutorController(AutorService autorService) {
+        this.autorService = autorService;
+    }
+
+    @GetMapping
+    public List&lt;AutorDTO&gt; listar() {
+        return autorService.listar();
+    }
+
+    @GetMapping("/{id}")
+    public AutorDTO obtenerPorId(@PathVariable Long id) {
+        return autorService.obtenerPorId(id);
+    }
+
+    @PostMapping
+    public AutorDTO crear(@RequestBody AutorDTO dto) {
+        return autorService.crear(dto);
+    }
+}</code></pre>
+
+<span class="filename">.../controllers/LibroController.java</span>
+<pre><code class="language-java">package com.tuempresa.biblioteca.controllers;
+
+import com.tuempresa.biblioteca.dtos.LibroDTO;
+import com.tuempresa.biblioteca.services.LibroService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/libros")
+public class LibroController {
+
+    private final LibroService libroService;
+
+    public LibroController(LibroService libroService) {
+        this.libroService = libroService;
+    }
+
+    @GetMapping
+    public List&lt;LibroDTO&gt; listar() {
+        return libroService.listar();
+    }
+
+    @GetMapping("/por-autor/{autorId}")
+    public List&lt;LibroDTO&gt; porAutor(@PathVariable Long autorId) {
+        return libroService.porAutor(autorId);
+    }
+
+    @GetMapping("/buscar")
+    public List&lt;LibroDTO&gt; buscar(@RequestParam String q) {
+        return libroService.buscarPorTitulo(q);
+    }
+
+    @PostMapping("/autor/{autorId}")
+    public LibroDTO crearParaAutor(
+            @PathVariable Long autorId,
+            @RequestBody LibroDTO dto) {
+        return libroService.crearParaAutor(autorId, dto);
+    }
+}</code></pre>
+
+<div class="note">Compara: el controller ahora tiene 3-4 líneas por método. Toda la lógica vive en el Service. Eso es lo que se llama "controlador delgado, servicio gordo".</div>
+
+<!-- ──────────────────── PASO 9 ──────────────────── -->
+<h2><span class="num">9</span> Documentar y probar con Swagger</h2>
+
+<h3>¿Qué es Swagger?</h3>
+<p><strong>Swagger</strong> (hoy parte del estándar <strong>OpenAPI</strong>) es una herramienta que lee las anotaciones de tus controllers (<code>@RestController</code>, <code>@GetMapping</code>, etc.) y genera automáticamente:</p>
+
+<ul class="checklist">
+  <li>Una <strong>especificación JSON</strong> de toda tu API (rutas, métodos, bodies, respuestas).</li>
+  <li>Una <strong>interfaz web</strong> (Swagger UI) para probar los endpoints sin instalar Postman.</li>
+</ul>
+
+<p>La dependencia que agregamos en el Paso 1 (<code>springdoc-openapi-starter-webmvc-ui</code>) se encarga de todo. No necesitas configurar nada más.</p>
+
+<h3>Arrancar la app</h3>
+<pre><code class="language-bash">mvn spring-boot:run</code></pre>
+
+<h3>URLs importantes</h3>
+<table>
+  <thead><tr><th>URL</th><th>Qué sirve</th></tr></thead>
+  <tbody>
+    <tr><td><code>http://localhost:8080/swagger-ui.html</code></td><td>Interfaz gráfica para probar la API</td></tr>
+    <tr><td><code>http://localhost:8080/v3/api-docs</code></td><td>Especificación JSON (OpenAPI)</td></tr>
+  </tbody>
+</table>
+
+<h3>Cómo usar Swagger UI</h3>
+<ol>
+  <li>Abre <code>http://localhost:8080/swagger-ui.html</code> en el navegador.</li>
+  <li>Verás las secciones <strong>autor-controller</strong> y <strong>libro-controller</strong> con todos los endpoints agrupados.</li>
+  <li>Haz clic en cualquier endpoint (por ejemplo <code>POST /api/autores</code>) → botón <strong>"Try it out"</strong>.</li>
+  <li>Edita el JSON del body y presiona <strong>"Execute"</strong>. Swagger mostrará la URL real, el cURL equivalente, y la respuesta del servidor.</li>
+</ol>
+
+<div class="note">Swagger es la manera más rápida de que un compañero (o el profesor) pruebe tu API sin tener que escribir código ni configurar clientes. Es documentación viva: cambia un endpoint y Swagger se actualiza solo.</div>
+
+<h3>Opcional: enriquecer la documentación</h3>
+<p>Puedes anotar tus controllers para que Swagger muestre descripciones más claras:</p>
+
+<pre><code class="language-java">import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@RestController
+@RequestMapping("/api/autores")
+@Tag(name = "Autores", description = "Gestión de autores y sus libros")
+public class AutorController {
+
+    @Operation(summary = "Lista todos los autores con sus libros")
+    @GetMapping
+    public List&lt;Autor&gt; listar() { ... }
+
+    @Operation(summary = "Crea un autor (opcionalmente con libros anidados)")
+    @PostMapping
+    public Autor crear(@RequestBody Autor autor) { ... }
+}</code></pre>
+
+<!-- ──────────────────── PASO 10 ──────────────────── -->
+<h2><span class="num">10</span> Pruebas concretas (Swagger o Postman)</h2>
+
+<p>Arranca la app con <code>mvn spring-boot:run</code>. Base URL: <code>http://localhost:8080</code>. Puedes ejecutar esta secuencia en Swagger UI o en Postman — los resultados deben ser idénticos.</p>
+
+<table>
+  <thead>
+    <tr><th>Paso</th><th>Método</th><th>URL</th><th>Body</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1. Crear autor</td>
+      <td><span class="method post">POST</span></td>
+      <td><code>/api/autores</code></td>
+      <td><code>{"nombre":"Gabriel García Márquez","nacionalidad":"Colombia"}</code></td>
+    </tr>
+    <tr>
+      <td>2. Agregar libro al autor 1</td>
+      <td><span class="method post">POST</span></td>
+      <td><code>/api/libros/autor/1</code></td>
+      <td><code>{"titulo":"Cien años de soledad","anio":1967}</code></td>
+    </tr>
+    <tr>
+      <td>3. Agregar otro libro al autor 1</td>
+      <td><span class="method post">POST</span></td>
+      <td><code>/api/libros/autor/1</code></td>
+      <td><code>{"titulo":"El amor en los tiempos del cólera","anio":1985}</code></td>
+    </tr>
+    <tr>
+      <td>4. Obtener autor 1 con sus libros</td>
+      <td><span class="method get">GET</span></td>
+      <td><code>/api/autores/1</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>5. Listar libros del autor 1</td>
+      <td><span class="method get">GET</span></td>
+      <td><code>/api/libros/por-autor/1</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>6. Buscar por título</td>
+      <td><span class="method get">GET</span></td>
+      <td><code>/api/libros/buscar?q=amor</code></td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ──────────────────── PASO 11 ──────────────────── -->
+<h2><span class="num">11</span> Verificar en la base de datos</h2>
+
+<p>Conéctate a PostgreSQL con <code>psql</code>, pgAdmin o DBeaver y corre:</p>
+
+<pre><code class="language-sql">SELECT a.nombre, l.titulo, l.anio
+FROM autor a
+JOIN libro l ON l.autor_id = a.id
+ORDER BY a.nombre, l.anio;</code></pre>
+
+<p>Deberías ver una fila por cada libro, con el nombre del autor al lado. Si ves esto, la relación <code>@OneToMany</code> está funcionando correctamente.</p>
+
+<!-- ──────────────────── CIERRE ──────────────────── -->
+<!-- ──────────────────── PASO 12 ──────────────────── -->
+<h2><span class="num">12</span> Errores comunes y cómo resolverlos</h2>
+
+<p>Lista de cosas con las que tus compañeros ya chocaron. Antes de gritar al profe, revisa esto.</p>
+
+<h3>1 · Maven no encuentra la dependencia que acabo de agregar</h3>
+
+<p>Síntoma: agregas <code>springdoc-openapi</code> o <code>lombok</code> al <code>pom.xml</code>, pero IntelliJ sigue diciendo <code>Cannot resolve symbol Operation</code> o <code>Cannot find Getter</code>.</p>
+
+<p><strong>Causa:</strong> IntelliJ no recarga el <code>pom.xml</code> automáticamente.</p>
+
+<p><strong>Solución (elige una):</strong></p>
+<ul class="checklist">
+  <li>En la esquina superior derecha aparece un pequeño ícono flotante de Maven (una M con flecha circular) cada vez que cambias el pom. Haz clic ahí y dice <em>"Load Maven Changes"</em>.</li>
+  <li>Atajo de teclado: <code>Cmd + Shift + O</code> (Mac) o <code>Ctrl + Shift + O</code> (Windows/Linux).</li>
+  <li>Vía menú: click derecho sobre <code>pom.xml</code> → <strong>Maven</strong> → <strong>Reload project</strong>.</li>
+  <li>Desde el panel Maven (derecha): botón de <em>Reload All Maven Projects</em> (ícono de flechas circulares).</li>
+</ul>
+
+<div class="note">Regla de oro: <strong>cada vez que tocas <code>pom.xml</code></strong>, recarga Maven. Si no, los cambios simplemente no existen para IntelliJ.</div>
+
+<h3>2 · "Failed to configure a DataSource" al arrancar</h3>
+
+<p>Síntoma: la app no arranca y el log dice <em>"Failed to configure a DataSource: 'url' attribute is not specified"</em>.</p>
+
+<p><strong>Causa:</strong> falta <code>application.properties</code> o está mal escrito.</p>
+
+<p><strong>Solución:</strong> revisa que <code>src/main/resources/application.properties</code> tenga <code>spring.datasource.url</code>, <code>spring.datasource.username</code> y <code>spring.datasource.password</code> con los valores correctos de tu PostgreSQL local.</p>
+
+<h3>3 · "database 'biblioteca_db' does not exist"</h3>
+
+<p>Síntoma: el log dice exactamente eso al arrancar.</p>
+
+<p><strong>Causa:</strong> Spring Boot crea las <strong>tablas</strong> automáticamente con <code>ddl-auto=update</code>, pero la <strong>base de datos</strong> la tienes que crear tú a mano.</p>
+
+<p><strong>Solución:</strong> abre pgAdmin o <code>psql</code> y ejecuta:</p>
+<pre><code class="language-sql">CREATE DATABASE biblioteca_db;</code></pre>
+
+<h3>4 · "password authentication failed for user 'postgres'"</h3>
+
+<p>Síntoma: PostgreSQL rechaza la conexión.</p>
+
+<p><strong>Solución:</strong> revisa que <code>spring.datasource.password</code> coincida con la contraseña de tu instalación de PostgreSQL. Si la olvidaste, la puedes cambiar con <code>ALTER USER postgres WITH PASSWORD 'nuevaclave';</code> desde pgAdmin.</p>
+
+<h3>5 · Lombok no genera los getters / setters</h3>
+
+<p>Síntoma: <code>@Getter @Setter</code> están en la clase pero IntelliJ no reconoce <code>getNombre()</code>.</p>
+
+<p><strong>Solución (dos pasos obligatorios):</strong></p>
+<ol>
+  <li>Instalar el <strong>plugin Lombok</strong> en IntelliJ (<em>Settings → Plugins → Marketplace → buscar "Lombok"</em>).</li>
+  <li>Habilitar <em>Annotation Processing</em>: <em>Settings → Build, Execution, Deployment → Compiler → Annotation Processors → marcar "Enable annotation processing"</em>.</li>
+</ol>
+
+<h3>6 · "No property X found for type Y" al iniciar la app</h3>
+
+<p>Síntoma: un <code>UnsatisfiedDependencyException</code> que termina en <em>"No property titulos found for type Libro"</em>.</p>
+
+<p><strong>Causa:</strong> escribiste un <em>derived query</em> mal (ej. <code>findByTitulos</code> pero el campo se llama <code>titulo</code>).</p>
+
+<p><strong>Solución:</strong> los nombres de método tienen que coincidir <strong>exactamente</strong> con los campos de la entidad (respetando mayúsculas).</p>
+
+<h3>7 · "LazyInitializationException" al devolver entidades</h3>
+
+<p>Síntoma: al hacer <code>GET /api/autores</code>, el log truena con <em>"could not initialize proxy - no Session"</em>.</p>
+
+<p><strong>Causa:</strong> Hibernate intentó cargar los libros (LAZY) fuera de la transacción.</p>
+
+<p><strong>Solución:</strong> tu servicio debería devolver <strong>DTOs</strong> (como en el Paso 7), no entidades. Si devuelves DTOs, nunca chocas con este error porque el mapeo <code>fromEntity</code> se ejecuta dentro de la transacción del service.</p>
+
+<h3>8 · Swagger UI muestra "No operations defined"</h3>
+
+<p>Síntoma: abres <code>/swagger-ui.html</code> y dice que no hay endpoints.</p>
+
+<p><strong>Causa habitual:</strong> la dependencia de springdoc no está en <code>pom.xml</code>, o Maven no se recargó (ver error #1).</p>
+
+<p><strong>Solución:</strong> confirma en <code>pom.xml</code> que tienes <code>springdoc-openapi-starter-webmvc-ui</code> versión 2.5.0 o superior, y recarga Maven.</p>
+
+<h3>9 · "relation 'autor' does not exist" cuando intentas un SELECT</h3>
+
+<p>Síntoma: las tablas no se ven en pgAdmin aunque la app arrancó.</p>
+
+<p><strong>Causa:</strong> Hibernate crea las tablas <strong>recién cuando inserta el primer registro</strong>. Si solo arrancaste la app sin hacer POST, las tablas aún no existen.</p>
+
+<p><strong>Solución:</strong> haz un <code>POST /api/autores</code> desde Postman o Swagger. Después refresca pgAdmin y verás las tablas.</p>
+
+<h3>10 · El puerto 8080 ya está en uso</h3>
+
+<p>Síntoma: <em>"Web server failed to start. Port 8080 was already in use"</em>.</p>
+
+<p><strong>Solución rápida:</strong> agrega esta línea en <code>application.properties</code>:</p>
+<pre><code class="language-properties">server.port=8081</code></pre>
+<p>Y accede a <code>http://localhost:8081</code>.</p>
+
+<h3>Checklist rápido antes de levantar la mano</h3>
+
+<ul class="checklist">
+  <li>¿Recargaste Maven después de tocar <code>pom.xml</code>?</li>
+  <li>¿PostgreSQL está corriendo?</li>
+  <li>¿Creaste la base de datos a mano?</li>
+  <li>¿Los nombres de los <em>derived queries</em> coinciden con los campos de la entidad?</li>
+  <li>¿Tus servicios devuelven DTOs, no entidades?</li>
+  <li>¿Lombok está habilitado (plugin + annotation processing)?</li>
+</ul>
+
+<h2><span class="num">✓</span> Lo que te llevas</h2>
+
+<ul class="checklist">
+  <li>Construiste una arquitectura completa en capas: <code>Entity → DTO → Repository → Service → Controller</code>.</li>
+  <li>Sabes dónde va la FK en una relación 1:N (siempre en el lado <code>@ManyToOne</code>).</li>
+  <li>Entiendes <code>mappedBy</code>, <code>cascade</code> y <code>orphanRemoval</code>.</li>
+  <li>Rompiste el ciclo entidad↔entidad usando DTOs con <code>fromEntity</code> / <code>toEntity</code>, sin <code>@JsonManagedReference</code>.</li>
+  <li>Usaste <code>@Service</code> y <code>@Transactional</code> (con <code>readOnly</code> cuando toca) para la lógica de negocio.</li>
+  <li>Creaste consultas derivadas (<code>findByAutorId</code>, <code>findByTituloContainingIgnoreCase</code>) sin escribir SQL.</li>
+</ul>
+
+<h3>Ejercicios extra (si sobra tiempo)</h3>
+<ol>
+  <li>Agrega el endpoint <code>DELETE /api/autores/{id}</code> y observa cómo <code>cascade</code> borra también sus libros.</li>
+  <li>Cambia <code>orphanRemoval</code> a <code>false</code>, quita un libro de la lista y vuelve a guardar el autor. ¿Qué pasa? ¿Por qué?</li>
+  <li>Agrega una consulta derivada: <code>findByAnioGreaterThanEqual(Integer anio)</code> y pruébala.</li>
+</ol>
+
+<footer>
+  ASI705 · Arquitectura de Aplicaciones Web · Prof. Elio Navarrete · UPC 2026-10
+</footer>
+
+</div>
+<script>hljs.highlightAll();</script>
+</body>
+</html>

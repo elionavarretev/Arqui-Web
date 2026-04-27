@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Entregas y revisión de PC1 (datos privados de estudiantes, no se publican)
+/public/temas/pc1/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

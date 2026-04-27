@@ -5,7 +5,7 @@ const weeks = [
   { week: 2, title: "APIs REST", subtitle: "Spring Boot, HTTP Verbs, REST Architecture", available: true, color: "from-purple-600 to-pink-600" },
   { week: 3, title: "Spring Data JPA", subtitle: "Entidades, Relaciones, Repositorios", available: true, color: "from-emerald-600 to-teal-600" },
   { week: 4, title: "Seguridad", subtitle: "JWT, Spring Security, Roles y Permisos", available: true, color: "from-orange-600 to-red-600" },
-  { week: 5, title: "PC1 — Práctica", subtitle: "Evaluación semana 5", available: false, color: "from-yellow-600 to-amber-600" },
+  { week: 5, title: "Cloud Computing", subtitle: "IaaS · PaaS · SaaS, despliegue, escalabilidad", available: true, color: "from-sky-600 to-cyan-600" },
   { week: 6, title: "Angular Intro", subtitle: "Componentes, Templates, Servicios", available: false, color: "from-rose-600 to-pink-600" },
   { week: 7, title: "Angular + API", subtitle: "HTTP Client, Observables, Forms", available: false, color: "from-cyan-600 to-blue-600" },
   { week: 8, title: "Parcial EA1", subtitle: "Evaluación parcial", available: false, color: "from-violet-600 to-purple-600" },
