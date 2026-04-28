@@ -204,7 +204,32 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
   }
-  tbody tr:hover { background: #f9f9f7; }
+  tbody tr {
+    transition: background 0.1s ease;
+  }
+  tbody tr:hover { background: #f5f5f4; }
+  tbody tr.selected {
+    background: #fef9c3 !important;
+    outline: 2px solid #ca8a04;
+    outline-offset: -2px;
+    position: relative;
+    z-index: 1;
+  }
+  tbody tr.selected td.pc,
+  tbody tr.selected td.code,
+  tbody tr.selected td.name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #422006;
+  }
+  tbody tr.selected td.total {
+    font-size: 16px;
+  }
+  tbody tr.selected td.total:last-of-type {
+    background: #ca8a04;
+    color: #fff !important;
+    font-weight: 800;
+  }
   tbody tr.not-delivered { opacity: 0.6; }
   .na-msg {
     text-align: center;
@@ -399,9 +424,9 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
         <td class="num ">2</td>
         <td class="num ">0</td>
         <td class="num good">1</td>
-        <td class="num practica">12</td>
-        <td class="total total20">16.67</td>
-        <td class="total tot-good">17.0</td>
+        <td class="num practica">10.0</td>
+        <td class="total total20">14.67</td>
+        <td class="total tot-good">15.0</td>
         <td class="bd"></td>
         <td class="check">✓</td>
         <td class="check">✓</td>
@@ -1243,6 +1268,15 @@ export const PC1_REVISION_HTML = `<!DOCTYPE html>
     b.classList.add('active');
     applyFilters();
   }));
+
+  // Selección de fila al hacer clic (toggle)
+  tbody.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr');
+    if (!tr) return;
+    const wasSelected = tr.classList.contains('selected');
+    tbody.querySelectorAll('tr.selected').forEach(t => t.classList.remove('selected'));
+    if (!wasSelected) tr.classList.add('selected');
+  });
 
   // Ordenamiento por columna
   const headers = document.querySelectorAll('thead th');
